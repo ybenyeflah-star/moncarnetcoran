@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="theme-color" content="#997a9c"><link rel="manifest" href="./manifest.webmanifest"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#faf6f9"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Carnet Coran">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png">
+<title>Mon Carnet Coran</title>
+<style>
+:root{--bg:#fbf7f6;--paper:#fff;--ink:#352e37;--muted:#8b828d;--accent:#a76f8b;--accent-dark:#85546e;--soft:#f6e9f0;--line:#eee4eb;--green:#5f846d;--green-bg:#e9f4eb;--orange:#b47f3d;--orange-bg:#fcf4e7;--red:#b15f70;--red-bg:#faebee;--shadow:0 8px 30px rgba(70,33,58,.045)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:default}a{color:var(--accent-dark)}.app{max-width:570px;margin:auto;min-height:100vh;padding:22px 18px 110px}.top{display:flex;justify-content:space-between;align-items:center;padding:3px 2px 20px}.eyebrow{font-size:10px;letter-spacing:2.1px;font-weight:800;color:var(--accent);text-transform:uppercase}.headline{font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.12;letter-spacing:-.5px;margin:5px 0 0}.sub{color:var(--muted);font-size:13px;margin:5px 0 0}.top-right{width:43px;height:43px;border:1px solid var(--line);background:#fff;border-radius:14px;display:grid;place-items:center;color:var(--accent)}.top-right svg{width:20px;height:20px}.card{border:1px solid var(--line);border-radius:20px;background:var(--paper);padding:18px;margin-bottom:14px;box-shadow:var(--shadow)}.card.tinted{background:#f5e9ee;border-color:#f2dfe8}.section-title{font-weight:750;font-size:16px;margin:23px 0 11px;display:flex;justify-content:space-between;align-items:center}.section-title small{font-size:12px;color:var(--muted);font-weight:500}.label{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);font-weight:800}.big{font-family:Georgia,"Times New Roman",serif;font-size:24px;margin:7px 0 1px}.muted{color:var(--muted)}.small{font-size:12px}.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.grow{flex:1;min-width:0}.pill{display:inline-flex;align-items:center;gap:5px;border-radius:99px;padding:5px 10px;background:var(--soft);color:var(--accent-dark);font-size:11px;font-weight:650;white-space:nowrap}.pill.green{background:var(--green-bg);color:var(--green)}.pill.orange{background:var(--orange-bg);color:var(--orange)}.pill.red{background:var(--red-bg);color:var(--red)}.pill.gray{background:#f2f0f2;color:#807983}.btn{border:0;border-radius:13px;background:var(--accent);padding:12px 15px;font-weight:700;color:#fff;display:inline-flex;justify-content:center;align-items:center;gap:7px}.btn.full{width:100%}.btn.ghost{background:#fff;color:var(--accent-dark);border:1px solid #e9d6e1}.btn.soft{background:var(--soft);color:var(--accent-dark)}.btn.danger{background:var(--red-bg);color:#a74e62}.btn.smallbtn{font-size:12px;padding:9px 11px;border-radius:10px}.linkbtn{border:none;background:none;color:var(--accent-dark);font-weight:700;padding:6px 0;font-size:12px}.iconbtn{height:31px;min-width:31px;border:1px solid var(--line);background:#fff;border-radius:9px;color:var(--muted);font-size:17px}.tick{width:22px;height:22px;accent-color:var(--accent);flex:0 0 auto}.task{display:flex;align-items:center;gap:11px;padding:12px 0;border-top:1px solid #f1eaf0}.task:first-child{border-top:0}.task.done .tasktext{text-decoration:line-through;color:var(--muted)}.progress{height:7px;background:#ede4ea;border-radius:20px;overflow:hidden;margin:9px 0}.fill{height:100%;background:var(--accent);border-radius:20px}.metricgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:13px 0 3px}.metric{border:1px solid var(--line);border-radius:16px;padding:11px 8px;background:white;text-align:center}.metric strong{font-family:Georgia,serif;font-size:25px;display:block;font-weight:500}.metric small{font-size:10px;color:var(--muted);line-height:1.2;display:block}.bottomnav{position:fixed;bottom:0;left:0;right:0;z-index:20;display:flex;justify-content:space-around;gap:4px;background:rgba(255,255,255,.97);box-shadow:0 -7px 35px rgba(58,31,52,.08);border-top:1px solid var(--line);padding:9px max(12px,calc((100vw - 570px)/2 + 14px)) calc(10px + env(safe-area-inset-bottom))}.navitem{flex:1;border:0;background:none;color:#9b909d;padding:6px 4px;border-radius:12px;font-size:10px;font-weight:600;display:flex;align-items:center;flex-direction:column;gap:4px}.navitem svg{width:21px;height:21px}.navitem.active{background:#f7ebf1;color:var(--accent-dark)}.field{display:block;margin:14px 0}.field label{display:block;font-weight:700;margin-bottom:6px;font-size:12px;color:#5f5260}.field input,.field select,.field textarea,.inlineinput{width:100%;border-radius:12px;padding:12px 13px;outline:0;border:1px solid #e5d9e1;background:white;color:var(--ink);min-height:44px}.field textarea{resize:vertical;min-height:80px}.field input:focus,.field select:focus,.field textarea:focus,.inlineinput:focus{border-color:var(--accent);box-shadow:0 0 0 3px #f5e7ef}.fieldline{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tinyhint{font-size:11px;color:var(--muted);margin-top:5px}.empty{border:1px dashed #dfcbd7;border-radius:17px;padding:23px 14px;text-align:center;color:var(--muted);font-size:13px;background:rgba(255,255,255,.5)}.empty .flower{font-size:27px;display:block;margin-bottom:8px}.listitem{padding:14px 0;border-bottom:1px solid var(--line)}.listitem:last-child{border-bottom:0;padding-bottom:0}.listitem:first-child{padding-top:2px}.session-title{font-weight:750}.tagline{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.searchrow{display:flex;gap:8px;margin-bottom:15px}.searchrow input{flex:1;min-width:0}.searchrow select{max-width:155px}.surah-row{display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--line);padding:12px 0;cursor:pointer}.surah-row:last-child{border:0}.surah-num{background:var(--soft);color:var(--accent-dark);width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:12px;flex:0 0 auto}.surah-row .name{font-weight:700}.arrow{margin-left:auto;color:#bcabb6;font-size:20px}.notice{padding:11px 13px;background:#f8eff3;border:1px solid #f0dee7;color:#785367;border-radius:13px;font-size:12px;margin:9px 0 14px}.tinybtn{border:0;background:none;color:var(--accent-dark);font-size:12px;font-weight:700}.chart{display:flex;align-items:end;gap:9px;height:113px;padding:10px 4px 0}.barcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}.bar{width:min(32px,100%);background:#ddbbcb;border-radius:7px 7px 3px 3px;min-height:3px;transition:height .3s}.barcol small{font-size:10px;color:var(--muted);margin-top:6px}.tipnum{display:grid;place-items:center;width:27px;height:27px;flex:0 0 auto;border-radius:10px;background:#f4e7ee;color:var(--accent-dark);font-weight:800}.tipstep{display:flex;gap:11px;align-items:flex-start;margin:14px 0;font-size:13px}.tipstep strong{display:block;margin-bottom:2px}.tipstep p{margin:0;color:#766d79}.modal-wrap{position:fixed;inset:0;z-index:40;display:none;align-items:end;justify-content:center;background:rgba(38,28,38,.47);padding:12px 10px 0}.modal-wrap.show{display:flex}.modal{max-width:570px;width:100%;background:var(--bg);border-radius:23px 23px 0 0;max-height:94dvh;overflow-y:auto;overscroll-behavior:contain;padding:20px 19px calc(25px + env(safe-area-inset-bottom));box-shadow:0 -5px 40px #28132333}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:8px}.modal h2{font-size:23px;font-family:Georgia,serif;font-weight:500;margin:0}.modal-close{background:white;border:1px solid var(--line);border-radius:11px;width:33px;height:33px;font-size:19px;color:var(--muted)}.modal-actions{display:flex;gap:10px;margin-top:18px}.modal-actions .btn{flex:1}.footer-note{text-align:center;font-size:11px;color:var(--muted);padding:10px}.toast{position:fixed;z-index:90;bottom:94px;left:50%;transform:translateX(-50%);white-space:nowrap;border-radius:13px;background:#433543;color:white;padding:10px 16px;display:none;box-shadow:0 6px 25px #0002;font-size:13px;max-width:95%;white-space:normal}.toast.show{display:block}.divider{border:0;border-top:1px solid var(--line);margin:13px 0}.marked{border-left:3px solid var(--accent);padding-left:10px}.tip-tab{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.selecttip{border:1px solid var(--line);border-radius:12px;padding:13px;background:white;color:var(--ink);text-align:left;font-weight:650;font-size:12px}.selecttip.active{background:var(--soft);border-color:#d9b4c7;color:var(--accent-dark)}.note-line{font-size:12px;color:#756975;white-space:pre-wrap;overflow-wrap:anywhere;margin:5px 0}.filebtn{position:relative;overflow:hidden}.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer}.statusbox{display:flex;flex-wrap:wrap;gap:6px}.statusbox button{border:1px solid var(--line);background:white;color:var(--muted);border-radius:10px;padding:9px 11px;font-size:11px;font-weight:650}.statusbox button.selected{background:var(--soft);border-color:#d7aec3;color:var(--accent-dark)}
+@media(min-width:650px){.app{border-left:1px solid #f0e8ec;border-right:1px solid #f0e8ec}.modal-wrap{align-items:center}.modal{border-radius:22px;max-height:88vh;padding-bottom:22px}}
+
+/* Carnet doux + tracker — V2 */
+:root{--bg:#faf8f7;--paper:#ffffff;--ink:#36313b;--muted:#817b87;--accent:#997a9c;--accent-dark:#735675;--soft:#f3ebf3;--line:#ece4ea;--green:#65846e;--green-bg:#ecf5ed;--orange:#ad7e49;--orange-bg:#faf0e4;--red:#ab6771;--red-bg:#fbecf0;--shadow:0 7px 24px rgba(71,49,66,.037)}
+body{background:linear-gradient(180deg,#faf6f9 0px,#faf8f7 360px)}
+.app{padding-top:26px}
+.headline{font-size:30px}.top{padding-bottom:25px}
+.card{border-radius:19px}.card.tinted{background:linear-gradient(140deg,#f4e8f0,#f8f0e9);border-color:#efe1e9}
+.metric:nth-child(2){background:#fdf9fc}.metric:nth-child(3){background:#fdfbf7}
+.navitem{font-size:9px;padding:7px 2px;gap:3px}.navitem svg{width:20px;height:20px}
+.bottomnav{padding-left:max(9px,calc((100vw - 570px)/2 + 10px));padding-right:max(9px,calc((100vw - 570px)/2 + 10px))}
+.vocab-word{font-size:28px;direction:rtl;unicode-bidi:isolate;font-family:'Noto Naskh Arabic','Traditional Arabic','Amiri',serif;line-height:1.65;color:#553b61;letter-spacing:.25px}
+.vocab-meaning{font-weight:700;font-size:14px}.vocab-alpha{position:sticky;top:0;z-index:2;background:#faf8f7f0;backdrop-filter:blur(8px);font-family:'Traditional Arabic',serif;color:var(--accent-dark);font-size:25px;padding:10px 5px 5px;border-bottom:1px solid var(--line)}
+.vocab-entry{border-bottom:1px solid var(--line);padding:12px 0;display:grid;grid-template-columns:1fr auto;gap:7px 8px;align-items:center}.vocab-entry:last-child{border:0}
+.vocab-search{width:100%;border:1px solid var(--line);border-radius:14px;min-height:45px;padding:11px 13px;outline:0;background:white}
+.vocab-search:focus{border-color:var(--accent)}
+.vocab-quick{display:flex;gap:6px;flex-wrap:wrap}.vocab-quick button{border:1px solid var(--line);border-radius:99px;background:white;color:var(--muted);padding:7px 11px;font-size:12px;font-weight:650}.vocab-quick button.active{background:var(--soft);border-color:#d8bfdb;color:var(--accent-dark)}
+.vocab-mini{display:inline-flex;padding:4px 8px;border-radius:99px;background:var(--green-bg);color:var(--green);font-size:11px;font-weight:700}
+.card-blank{background:#fffdfc}
+.session-details{margin:9px 0;padding:9px 10px;border-radius:10px;background:#faf6f9;font-size:12px;color:var(--muted)}.session-details summary{cursor:pointer;font-weight:650;color:var(--accent-dark)}.session-details[open] summary{margin-bottom:7px}
+.home-journal{border-left:3px solid #caabc4;padding-left:12px;margin-top:8px}
+.arabic-input{direction:rtl;text-align:right;font-size:22px!important;font-family:'Noto Naskh Arabic','Traditional Arabic',serif!important}
+@media(max-width:355px){.navitem{font-size:8px}.bottomnav{gap:0}.app{padding-left:13px;padding-right:13px}}
+
+/* Navigation latérale discrète — palette et logo originaux conservés */
+.app{padding-top:22px;padding-bottom:48px}
+.top{gap:12px;align-items:center;padding-bottom:23px}
+.top-titles{min-width:0;flex:1}.top .headline{font-size:27px}
+.top .sub{display:none}
+.menu-trigger{display:grid;place-items:center;flex:0 0 40px;width:40px;height:42px;background:#fff;border:1px solid var(--line);border-radius:13px;color:var(--accent-dark)}
+.menu-trigger svg{height:21px;width:21px}
+.top-right{flex:0 0 43px}
+.drawer-shade{position:fixed;inset:0;background:rgba(37,25,38,.38);z-index:49;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s}
+.sidebar{position:fixed;inset:0 auto 0 0;z-index:50;width:min(300px,84vw);background:#fffefa;box-shadow:10px 0 35px rgba(46,30,52,.13);transform:translateX(-106%);visibility:hidden;pointer-events:none;transition:transform .2s;display:flex;flex-direction:column;padding:28px 15px max(18px,env(safe-area-inset-bottom))}
+body.drawer-open{overflow:hidden}
+body.drawer-open .drawer-shade{opacity:1;visibility:visible;pointer-events:auto}
+body.drawer-open .sidebar{transform:translateX(0);visibility:visible;pointer-events:auto}
+.drawer-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding:0 6px 17px;border-bottom:1px solid var(--line)}
+.drawer-heading .eyebrow{font-size:11px;letter-spacing:1.6px}
+.side-links{display:flex;flex-direction:column;gap:4px}
+.side-link{display:flex;align-items:center;gap:13px;width:100%;padding:13px 12px;border:0;border-radius:13px;background:transparent;color:var(--ink);font-weight:650;text-align:left;font-size:14px}
+.side-link.active{background:var(--soft);color:var(--accent-dark)}
+.side-icon{width:25px;flex:0 0 25px;text-align:center;font-size:22px;font-family:Georgia,'Traditional Arabic',serif;color:var(--accent)}
+.drawer-bottom{border-top:1px solid var(--line);padding-top:12px;margin-top:auto}
+/* Mémos des symboles d'arrêt */
+.signs-intro{margin:0 0 13px;font-size:12px;color:var(--muted)}
+.signs-list{display:grid;gap:10px}
+.signcard{display:flex;align-items:center;gap:14px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:17px;min-height:83px}
+.signsymbol{background:#f5edf3;display:grid;place-items:center;min-width:62px;height:60px;border-radius:13px;font-size:27px;font-family:'Traditional Arabic','Amiri',serif;color:#715071;direction:rtl}
+.signinfo{flex:1;min-width:0}.signinfo strong{display:block;font-size:14px;margin-bottom:4px}.signinfo small{color:var(--muted);font-size:12px;line-height:1.35;display:block}
+.signs-source{font-size:11px;color:var(--muted);line-height:1.5;margin-top:14px}
+@media(max-width:380px){.top{gap:9px}.top .headline{font-size:25px}.menu-trigger{flex-basis:37px;width:37px}.top-right{flex-basis:39px;width:39px}}
+
+
+.week-tracker{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;max-width:360px;margin:9px auto 5px;padding:3px 4px}
+.week-day{display:flex;flex-direction:column;align-items:center;gap:9px;font-size:12px;color:var(--muted)}
+.week-circle{height:25px;width:25px;border-radius:50%;display:grid;place-items:center;background:#f0eaef;color:#9b8a9b;font-size:16px;line-height:1}
+.week-circle.complete{background:#eaf3ec;color:var(--green);font-weight:800;border:1px solid #cce2d2}
+
+/* V6 : layout cohérent avec la première interface violette et la taille du téléphone. */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+.app{width:100%;max-width:570px}
+.modal-wrap{padding:8px 8px 0;align-items:flex-end}
+.modal{width:100%;max-width:570px;max-height:95dvh;min-width:0;overflow-x:hidden;padding:18px 17px max(25px,env(safe-area-inset-bottom))}
+#modalbody,.session-section,.session-repeat{min-width:0;max-width:100%}
+#sessionform input,#sessionform select,#sessionform textarea,.field input,.field select,.field textarea,.inlineinput,.vocab-search{font-size:16px!important;max-width:100%}
+#sessionform input[type="number"]{min-width:0;appearance:textfield;-moz-appearance:textfield}
+#sessionform input[type="number"]::-webkit-inner-spin-button,#sessionform input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+#sessionform .session-section{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin:15px 0}
+#sessionform .session-section-title{font-size:15px;font-weight:780;color:var(--accent-dark);margin:0 0 12px}
+#sessionform .field{margin:10px 0}
+#sessionform .fieldline{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px}
+#sessionform .session-repeat{border:1px solid #eee6ed;background:#fdf9fb;padding:10px;border-radius:13px;margin-bottom:10px}
+#sessionform .session-repeat:first-child{margin-top:4px}
+#sessionform .session-numbers{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 33px;gap:8px;align-items:end}
+#sessionform .session-meaning{display:grid;grid-template-columns:minmax(0,1fr) 33px;gap:8px;align-items:end}
+#sessionform .remove-row{margin-bottom:10px;height:45px;min-width:33px}
+#sessionform .field input,#sessionform .field select{height:47px;padding:10px}
+#sessionform .field textarea{min-height:73px}
+#sessionform .modal-actions{position:sticky;bottom:-25px;background:linear-gradient(transparent,var(--bg) 14%);padding-top:16px;padding-bottom:12px;z-index:2}
+#sessionform .modal-actions .btn{min-width:0;padding:11px 8px}
+@media(max-width:380px){.app{padding-left:14px;padding-right:14px}.modal{padding:15px 12px max(19px,env(safe-area-inset-bottom))}#sessionform .session-section{padding:11px}#sessionform .session-numbers{gap:5px}}
+
+
+/* V7 — pages quotidiennes du journal, coloris violet inchangés */
+.diary-navigation{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:8px;margin:6px 0 14px}
+.diary-arrow{width:44px;height:44px;border:1px solid var(--line);background:#fff;border-radius:13px;font-size:25px;color:var(--accent-dark);line-height:1;display:grid;place-items:center}
+.diary-arrow:disabled{opacity:.25}
+.diary-date-block{text-align:center;min-width:0}
+.diary-date-block .label{font-size:9px}
+.diary-date{font-family:Georgia,serif;font-size:17px;color:var(--ink);margin-top:4px;text-transform:capitalize;line-height:1.2}
+.diary-datepicker{display:flex;align-items:center;gap:9px;margin-bottom:16px;justify-content:center}
+.diary-datepicker label{font-size:12px;color:var(--muted);white-space:nowrap}
+.diary-datepicker input{font-size:16px!important;min-width:0;max-width:175px;background:white;border:1px solid var(--line);border-radius:10px;height:42px;padding:8px;color:var(--ink)}
+.diary-datepicker .linkbtn{white-space:nowrap}
+.diary-page{background:#fffdfd;border:1px solid var(--line);border-radius:19px;padding:18px 16px 17px;box-shadow:var(--shadow);min-height:270px}
+.diary-page-title{display:flex;align-items:center;justify-content:space-between;font:22px Georgia,serif;color:var(--accent-dark);padding:0 0 14px;border-bottom:1px solid var(--line)}
+.diary-entry{padding:16px 0 15px;border-bottom:1px solid var(--line)}
+.diary-entry-head{gap:5px;margin:0 0 12px;flex-wrap:wrap}
+.diary-entry-head .tinybtn{padding:7px 4px}
+.diary-entry .diary-subhead{font-size:12px;font-weight:800;color:var(--accent-dark);margin:12px 0 4px}
+.diary-entry .note-line{font-size:13px;color:#756975;margin:8px 0}
+.diary-surahs{display:flex;flex-wrap:wrap;gap:6px}
+.diary-surah{background:#f7eff6;border:1px solid #ebdce8;border-radius:9px;padding:6px 8px;font-size:12px}
+.diary-attention{background:#fdf2f5;border-left:3px solid #d6a9bb;padding:9px 11px;border-radius:0 9px 9px 0;margin-top:10px;font-size:12px}
+.diary-attention .note-line{margin:3px 0 0}
+.diary-blank{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:130px;gap:6px;color:var(--muted);font-size:13px}
+.diary-blank-decor{font-size:27px;color:#c5abc2}
+.diary-add{margin-top:19px}
+.diary-count{text-align:center;color:var(--muted);font-size:11px;margin:12px 0}
+.settings-section{margin-top:17px}.settings-section h3{font-size:16px;margin:0 0 9px;color:var(--accent-dark)}
+.settings-section .card{padding:13px}.settings-section .chart{gap:5px}
+.settings-stat{font-family:Georgia,serif;font-size:25px;font-weight:500;color:var(--ink)}
+.status-history{border-bottom:1px solid var(--line);padding:9px 0}.status-history:last-child{border-bottom:0}
+@media(max-width:360px){.diary-navigation{grid-template-columns:37px minmax(0,1fr) 37px;gap:5px}.diary-arrow{width:37px;height:41px}.diary-date{font-size:15px}.diary-page{padding:15px 12px}.diary-datepicker{gap:6px}.diary-datepicker input{max-width:155px}.diary-datepicker label{font-size:11px}}
+
+
+/* Correction sans modifier les cartes violettes : éviter le zoom automatique des champs iOS */
+@media (pointer:coarse) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(.arabic-input),
+  select, textarea {font-size:16px!important}
+}
+
+/* V8 : même thème violet. Saisie de date compacte JJ/MM/AAAA. */
+#sessionform .session-date-field{margin:9px 0 13px}
+#sessionform .session-date-field input{width:164px!important;max-width:100%!important;height:42px!important;min-height:42px!important;padding:8px 12px!important;font-size:16px!important;letter-spacing:.2px;display:block}
+#sessionform .verse-hint{font-size:11px;color:var(--muted);text-align:right;margin:1px 3px 0}
+#sessionform [data-correction-row] .field textarea{min-height:68px}
+#sessionform [data-correction-row] .field input{font-size:16px!important}
+#sessionform .session-repeat .field{margin:9px 0}
+
+
+/* V12 — actions de saisie compactes à droite, accessibles pendant le défilement.
+   Ne pas utiliser de barre de validation en bas : badge Netlify superposé sur iPhone. */
+.modal-head{position:sticky;top:-18px;z-index:5;display:flex;justify-content:flex-start;align-items:center;gap:12px;background:var(--bg);padding:11px 0 13px;margin-top:-11px;border-bottom:1px solid var(--line)}
+.modal-head h2{font-size:clamp(17px,5vw,23px);line-height:1.18;min-width:0;flex:1}
+.modal-quick-actions{display:flex;align-items:center;gap:7px;flex:none}
+.modal-quick{display:grid;place-items:center;border-radius:12px;width:40px;height:40px;padding:0;border:1px solid var(--line);background:#fff;color:var(--accent-dark);font:700 20px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;touch-action:manipulation}
+.modal-quick.confirm{background:var(--accent);border-color:var(--accent);color:white;font-size:24px}
+.modal-quick[hidden]{display:none!important}
+.modal-quick:focus-visible{outline:3px solid #d1a8d4;outline-offset:2px}
+/* Le formulaire se valide par ✓ ; l'ancienne barre basse ne gêne plus. */
+.modal #modalbody form .modal-actions{display:none!important}
+@media(min-width:650px){.modal-head{top:-20px}}
+@media(max-width:380px){.modal-head{gap:9px}.modal-head h2{font-size:18px}.modal-quick{width:39px;height:39px}}
+
+/* V13 : maquette mobile validée. Navigation directe, cartes courtes, champs compacts. */
+:root{--bg:#f7f1f7;--paper:#fdfafd;--ink:#392c3b;--muted:#746477;--accent:#95618d;--accent-dark:#773a72;--soft:#f1e5f1;--line:#e7dce7;--shadow:0 2px 5px #56334f08;--green:#35694d;--green-bg:#e6f0e9;--orange:#7c4e79;--orange-bg:#eee3f2;--red:#a13a52;--red-bg:#f9e0e5}
+body{background:linear-gradient(155deg,#faf5fa,#f4edf5);font-size:15px;line-height:1.38}button{touch-action:manipulation}button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}button[hidden]{display:none!important}.ui-icon{width:22px;height:22px;flex:none;vertical-align:middle;color:inherit}.app{max-width:480px;padding:calc(20px + env(safe-area-inset-top)) 15px calc(100px + env(safe-area-inset-bottom));min-height:100dvh}.top{padding:0 0 22px;gap:8px}.top .headline{font:700 29px/1.15 Georgia,serif;letter-spacing:-.65px;margin:0;display:flex;align-items:center;gap:6px}.top .headline .ui-icon{width:30px;height:30px;color:var(--accent-dark)}.top:has(#title .ui-icon) .headline{font-size:clamp(22px,6vw,28px);color:var(--accent-dark)}.top .sub{display:none}.menu-trigger,.top-right{background:#fff9ff;border-color:var(--line);border-radius:12px;width:42px;height:42px;flex:0 0 42px;color:var(--accent-dark)}.greeting{margin:0 0 20px}.greeting h2{font:700 23px/1.25 Georgia,serif;margin:0 0 3px}.greeting p{margin:0;color:#564358;font-size:15px}.home-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}.stat-card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-height:150px;padding:13px 15px 16px;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);color:var(--ink)}.stat-icon{display:grid;place-items:center;background:#f2e4f1;color:var(--accent-dark);border-radius:50%;width:44px;height:44px;margin-bottom:6px}.stat-icon svg{width:28px;height:28px}.stat-card strong{font-size:34px;font-weight:780;line-height:1.1;margin:0 0 4px;letter-spacing:-1px}.stat-card>span:last-child{font-size:15px;color:#5e3e5d;line-height:1.25}.card{background:var(--paper);border-radius:17px;padding:15px;box-shadow:var(--shadow);margin-bottom:15px}.compact-title{display:flex;align-items:center;gap:9px;color:var(--accent-dark);font-size:16px;margin-bottom:9px}.compact-title svg{width:24px;height:24px}.mini-add{margin-left:auto;background:none;border:0;color:var(--accent-dark);width:40px;height:36px;font-size:23px;line-height:1}.home-goals .task{border:0;padding:7px 0;min-height:42px;font-size:15px}.home-goals .task.done .tasktext{text-decoration:none;color:var(--ink)}.tick{appearance:none;border:1.5px solid #bb94b4;border-radius:50%;width:24px;height:24px;margin:0;display:grid;place-items:center;background:white}.tick:checked{background:var(--accent);border-color:var(--accent)}.tick:checked:after{content:'✓';color:white;font-weight:bold;font-size:17px}.goal-remove{border:0;background:none;color:#9f809a;font-size:19px;width:30px;height:36px;padding:0}.home-week{padding:14px 16px}.week-tracker{margin:10px 0 0;padding:0;max-width:none}.week-day{font-size:13px;color:var(--ink);gap:8px}.week-circle{width:24px;height:24px;background:#e5d8e4;color:transparent;font-size:13px}.week-circle.complete{background:var(--accent);border:0;color:white;font-size:16px}.btn{background:#93618c;border-radius:12px;min-height:45px;font-size:15px}.btn.soft{background:#f1e5f1;color:var(--accent-dark)}.new-session{min-height:47px;font-size:17px;margin:4px 0 2px}.current-line{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:5px}.current-line .linkbtn{min-height:38px;text-align:left;font-weight:600}.bottomnav{display:flex;max-width:480px;margin:auto;left:0;right:0;gap:5px;z-index:25;padding:9px 12px calc(9px + env(safe-area-inset-bottom));border-radius:23px 23px 0 0;background:#fdf9fd;box-shadow:0 -3px 20px #4630470a;color:var(--accent-dark);border:1px solid #eee4ed;border-bottom:0}.navitem{font-size:11px;font-weight:600;min-height:56px;gap:5px;padding:7px 3px;color:#694f68}.navitem.active{color:#6d2b68;background:#f1e1f0}.navitem svg{height:24px;width:24px}.filter-chips{display:flex;overflow-x:auto;scrollbar-width:none;gap:7px;padding:1px 0 13px;margin-bottom:2px}.filter-chips::-webkit-scrollbar{display:none}.filter-chip{border:1px solid var(--line);background:#fffafd;border-radius:13px;flex:0 0 auto;padding:7px 11px;min-height:44px;max-width:94px;white-space:normal;font-size:12px;color:var(--ink);line-height:1.15}.filter-chip.active{background:var(--accent);border-color:var(--accent);color:white;font-weight:700}.surah-list{display:grid;gap:8px}.surah-list .surah-row{border:1px solid var(--line);border-radius:16px;padding:12px 12px;min-height:62px;background:var(--paper);box-shadow:var(--shadow);width:100%;text-align:left;color:var(--ink);gap:7px}.surah-list-name{flex:1;min-width:0;font-size:15px;font-weight:560;overflow-wrap:anywhere}.surah-list .pill{padding:6px 8px;font-size:11px;max-width:45%;white-space:normal;line-height:1.15;text-align:center}.surah-list .pill.green:before{content:'✓';margin-right:2px}.surah-list .pill.red:before{content:'!';border:1px solid currentColor;border-radius:50%;width:12px;line-height:12px;text-align:center;flex:none}.surah-list .arrow{margin:0;font-size:18px;color:#7c5677}.diary-navigation{grid-template-columns:44px minmax(0,1fr) 44px;gap:9px;margin:0 0 20px}.diary-arrow{font-size:29px;color:var(--accent-dark);background:var(--paper);border-radius:12px}.journal-date-control{position:relative;height:44px;background:var(--paper);border:1px solid var(--line);border-radius:12px;display:grid;place-items:center;font-size:17px;font-weight:650;overflow:hidden}.journal-date-control input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px}.journal-date-control input::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:100%;height:100%;margin:0;cursor:pointer}.diary-entry{border:1px solid var(--line);background:var(--paper);border-radius:17px;padding:10px;margin-bottom:15px;box-shadow:var(--shadow)}.diary-entry:first-child,.diary-entry:last-child{padding:10px;border:1px solid var(--line)}.entry-banner{background:#f2e7f2;color:var(--accent-dark);min-height:44px;padding:7px 9px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:15px; margin-bottom:9px}.entry-edit{border:0;background:none;color:var(--accent-dark);margin-left:auto;font-size:20px;min-width:36px;min-height:32px}.entry-line{display:flex;gap:9px;align-items:flex-start;padding:7px 4px;font-size:14px;overflow-wrap:anywhere}.entry-line svg{width:20px;height:20px;color:var(--accent-dark)}.entry-line b{font-weight:650}.entry-notes{margin:4px 6px;color:var(--muted);font-size:13px}.entry-notes summary{cursor:pointer;padding:7px 0}.entry-delete{background:none;border:0;color:#846d80;font-size:11px;display:block;margin:2px 0 0 auto;min-height:30px}.diary-add{margin-top:10px;font-size:16px}.today-link{display:block;margin:10px auto}.journal-empty{padding:35px 15px}.modal-wrap.session-screen{background:var(--bg);padding:0;align-items:stretch;z-index:40}.session-screen .modal{width:100%;max-width:480px;max-height:none;height:100dvh;min-height:0;padding:calc(12px + env(safe-area-inset-top)) 15px calc(110px + env(safe-area-inset-bottom));border-radius:0;background:linear-gradient(155deg,#faf5fa,#f4edf5);box-shadow:none;overflow-y:auto}.session-screen .modal-head{top:calc(-12px - env(safe-area-inset-top));margin:0 -1px 13px;padding:calc(12px + env(safe-area-inset-top)) 0 11px;background:#faf5fa;gap:8px;border:0}.session-screen .modal-head h2{font:bold 29px/1.15 Georgia,serif;letter-spacing:-.4px}.modal-quick{width:44px;height:44px;min-width:44px;border-radius:12px;background:#fffafd;color:var(--accent-dark);border:1px solid var(--line)}.modal-quick.confirm{background:var(--accent);color:white;border-color:var(--accent)}#session-nav{display:none}.session-screen #session-nav{display:flex;z-index:42}.session-screen #sessionform .session-date-field{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:11px 13px;margin:0 0 13px;min-height:61px}.session-date-field label{display:flex;align-items:center;gap:8px;margin:0;font-size:14px;color:var(--ink)}.session-date-field label svg{color:var(--accent-dark)}#sessionform .session-date-field input{width:172px!important;max-width:63%!important;height:42px!important;min-height:42px!important;text-align:center;border-radius:10px;background:#fffafd}#sessionform .session-section{background:var(--paper);border-radius:17px;padding:12px 13px;margin:0 0 13px;box-shadow:var(--shadow)}#sessionform .session-section-title{font-size:16px;display:flex;align-items:center;gap:9px;margin:0 0 8px;color:var(--accent-dark)}#sessionform .session-section-title svg{width:23px;height:23px}#sessionform .field{margin:8px 0}#sessionform .field label{font-size:13px;font-weight:650;margin-bottom:5px;color:var(--ink)}#sessionform .field input,#sessionform .field select{height:44px;min-height:44px;padding:8px 10px;border-radius:10px;background:#fffafd;font-size:16px!important}#sessionform .field textarea{min-height:65px;border-radius:10px;background:#fffafd}#sessionform .fieldline{gap:12px}#sessionform .session-section .btn.ghost{border:0;background:#f1e5f1;color:var(--accent-dark);min-height:43px;padding:9px 7px;font-size:14px;margin-top:4px}.optional-field{margin-top:5px;font-size:12px;color:#825878}.optional-field summary{padding:6px 0;cursor:pointer;list-style:none;min-height:28px;display:flex;align-items:center}.optional-field summary::-webkit-details-marker{display:none}.optional-field[open] summary{font-weight:650}.duration-field{padding:0 12px}.session-screen .verse-hint{font-size:11px;margin:0}.session-screen .session-repeat{padding:10px;border-radius:12px;background:#faf4fa}.session-screen .modal-quick-actions{gap:8px}.toast{bottom:calc(98px + env(safe-area-inset-bottom))}.drawer-bottom{margin-top:25px}.sidebar{overflow-y:auto}.signcard,.vocab-entry{overflow-wrap:anywhere}.notice,.signs-intro{display:none}
+@media(max-width:360px){.app{padding-left:12px;padding-right:12px}.top .headline{font-size:25px}.home-metrics{gap:8px}.stat-card{min-height:138px;padding:12px}.session-screen .modal{padding-left:12px;padding-right:12px}.session-screen .modal-head h2{font-size:24px}.navitem{font-size:10px}.surah-list .surah-row{padding:10px 8px}.surah-list-name{font-size:14px}.surah-list .pill{font-size:10px}}
+
+/* Finitions : formulaire compact, sans réduire les champs tactiles. */
+.session-screen .modal-head{margin-bottom:9px;padding-bottom:8px}.session-screen #sessionform .session-date-field{padding:7px 11px;min-height:54px;margin-bottom:10px}#sessionform .session-section{padding:10px 12px;margin-bottom:10px}#sessionform .session-section-title{margin-bottom:5px}#sessionform .field{margin:5px 0}#sessionform .fieldline .field{margin:5px 0}#sessionform .session-section .btn.ghost{margin-top:3px}.optional-field{margin-top:1px}.optional-field summary{min-height:28px;padding:4px 0}.session-screen .verse-hint{display:none}.session-screen .session-repeat .verse-hint{display:block}.session-screen .modal-head h2{font-size:27px}.session-screen .modal-head{padding-top:9px}.session-screen .modal{padding-top:calc(8px + env(safe-area-inset-top))}.session-screen .modal-head{top:calc(-8px - env(safe-area-inset-top))}
+/* Visibilité et sélection des filtres. */
+.filter-chips{scroll-padding:6px}.filter-chip{max-width:102px}.filter-chip:focus-visible{outline-offset:-2px}.home-goals .task{cursor:pointer}.entry-delete{min-height:36px}.current-line .linkbtn{min-height:44px}
+
+/* V14 — carnet violet, navigation latérale uniquement */
+:root{--bg:#faf8f7;--paper:#ffffff;--ink:#36313b;--muted:#716a76;--accent:#997a9c;--accent-dark:#735675;--soft:#f3ebf3;--line:#ece4ea;--green:#65846e;--green-bg:#ecf5ed;--orange:#ad7e49;--orange-bg:#faf0e4;--red:#ab6771;--red-bg:#fbecf0;--shadow:0 7px 24px rgba(71,49,66,.037)}
+body,.session-screen .modal{background:linear-gradient(180deg,#faf6f9 0px,#faf8f7 360px)}
+.app{padding-bottom:calc(100px + env(safe-area-inset-bottom))}.bottomnav,#session-nav,.session-screen #session-nav{display:none!important}.top .headline{color:var(--ink)}.top .headline .ui-icon,.top:has(#title .ui-icon) .headline{color:var(--accent-dark)}.stat-card{min-height:112px;padding:12px 14px;background:white}.stat-icon{width:36px;height:36px;background:var(--soft);margin-bottom:4px}.stat-icon svg{width:23px;height:23px}.stat-card strong{font-size:29px}.stat-card>span:last-child{color:var(--accent-dark)}.btn{background:var(--accent-dark)}.btn.soft{background:var(--soft);color:var(--accent-dark)}.week-circle.complete{background:var(--accent)}.greeting{margin-bottom:12px}.home-metrics{margin-bottom:12px}.card{margin-bottom:12px}.session-screen .modal-head{background:#faf6f9}.session-screen #sessionform .session-date-field input,#sessionform .field input,#sessionform .field select,#sessionform .field textarea{background:white}.entry-banner,#sessionform .session-section .btn.ghost{background:var(--soft)}.sidebar{background:#fff;overflow-y:auto;padding-top:calc(18px + env(safe-area-inset-top));padding-bottom:calc(90px + env(safe-area-inset-bottom))}.side-link{min-height:48px;padding:10px 11px}.side-icon{display:grid;place-items:center}.side-icon svg{width:22px;height:22px}.drawer-bottom{margin-top:14px}.side-divider{border:0;border-top:1px solid var(--line);margin:9px 6px}.side-caption{color:var(--muted);font-size:11px;padding:4px 12px;font-weight:700}.modal{padding-bottom:calc(90px + env(safe-area-inset-bottom))}.session-screen .modal{padding-bottom:calc(100px + env(safe-area-inset-bottom))}.home-actions{display:grid;gap:9px;margin-bottom:12px}.home-actions .btn{min-height:48px}.home-learning{border-radius:17px;background:linear-gradient(135deg,#f4e8f0,#f8f0e9);border:1px solid var(--line);padding:14px;margin-bottom:12px}.home-learning h2{font:600 22px Georgia,serif;margin:5px 0 3px}.learn-step{font-size:12px;color:var(--accent-dark);font-weight:700;letter-spacing:.4px}.learn-progress{display:flex;gap:6px;margin:0 0 14px}.learn-progress i{flex:1;height:5px;border-radius:9px;background:var(--line)}.learn-progress i.on{background:var(--accent)}.learn-title{font:600 25px/1.2 Georgia,serif;margin:7px 0}.learn-check{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);min-height:44px}.learn-link{display:flex;align-items:center;justify-content:space-between;gap:8px;text-decoration:none;font-weight:650;min-height:45px;padding:10px 13px;border-radius:12px;background:var(--soft);color:var(--accent-dark);margin:8px 0}.counter{display:flex;align-items:center;justify-content:center;gap:9px;margin:18px 0}.counter i{width:25px;height:25px;border-radius:50%;border:1.5px solid var(--accent);display:grid;place-items:center;color:white;font-style:normal}.counter i.on{background:var(--accent)}.learn-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:10px 0}.learn-actions .btn{min-height:48px;font-size:14px}.learn-note{font-size:14px;line-height:1.5;color:var(--muted);margin:8px 0}.learn-card .field input,.learn-card .field select{min-height:44px;font-size:16px}.learn-card .field textarea{font-size:16px}.learn-card .btn.full{margin-top:10px}.learn-card .fieldline>*{min-width:0}.learn-card h3{font-size:16px;margin:0 0 10px;color:var(--accent-dark)}.home-learning .row{flex-wrap:wrap}.learn-card .btn.ghost{color:var(--accent-dark);background:white}.learn-card .btn.soft{color:var(--accent-dark);background:var(--soft)}
+
+/* V15 — suivi adapté à une révision d'un juz' ou d'un hizb entier. */
+.app{padding-bottom:calc(42px + env(safe-area-inset-bottom))}
+.home-metrics{margin-bottom:10px;gap:10px}
+.stat-card{min-height:111px}
+.stat-card strong{font-size:clamp(26px,7vw,35px)}
+.quran-progress{padding:0 7px 13px;margin-bottom:6px}
+.quran-progress .progress{height:9px;margin:7px 0}
+.quran-progress b{color:var(--accent-dark)}
+.express-main{margin-bottom:10px;font-size:16px;min-height:50px}
+.express-main svg{width:20px;height:20px}
+.home-secondary{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:0 0 18px}
+.home-secondary .btn{min-width:0;padding:9px 5px;font-size:13px;min-height:46px;white-space:nowrap}
+.home-secondary svg{width:17px;height:17px}
+.focus-card{padding:13px 15px}
+.focus-card .compact-title{margin-bottom:4px}
+.focus-count{margin-left:auto;background:var(--soft);color:var(--accent-dark);padding:2px 9px;border-radius:99px;font-size:12px;font-weight:bold}
+.focus-item{display:flex;align-items:center;gap:9px;width:100%;min-height:45px;border:0;border-bottom:1px solid var(--line);background:transparent;padding:9px 0;text-align:left}
+.focus-name{flex:1;font-weight:680;color:var(--ink)}
+.focus-item .arrow{font-size:20px}
+.focus-card .linkbtn{display:block;margin-top:7px}
+.compact-current{padding:12px 15px}
+.surah-counter{font:600 27px Georgia,serif;margin:4px 0}
+.surah-counter span{font:400 13px sans-serif;color:var(--muted)}
+.surah-pct{font:bold 23px Georgia,serif;color:var(--accent-dark)}
+.surah-overview .progress{height:9px}
+.filter-chips{gap:7px;overflow-x:auto}
+.filter-chip{max-width:none;white-space:nowrap;padding:10px 12px}
+.quick-date input{width:164px;max-width:100%;font-size:16px!important}
+.quick-label{font-size:16px;color:var(--accent-dark);font-weight:750;margin:18px 0 11px}
+.quick-kind{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px}
+.quick-kind button{min-height:47px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--accent-dark);font-weight:700}
+.quick-kind button.active{background:var(--accent);color:white;border-color:var(--accent)}
+.quick-selected{font-size:12px;color:var(--muted);margin:0 0 8px;line-height:1.5}
+#quickreviewform .session-repeat{padding:11px;background:#f9f1f7;border-radius:12px;margin-bottom:10px}
+#quickreviewform .field input,#quickreviewform .field select,#quickreviewform textarea{font-size:16px!important}
+#quickreviewform .field{margin:10px 0}
+#quickreviewform .modal-actions{display:none}
+#quickreviewform .optional-field{margin-top:15px}
+@media(max-width:345px){.home-secondary .btn{font-size:12px}.stat-card strong{font-size:26px}}
+
+/* V16 · usage quotidien simplifié, sans barre inférieure. */
+:root{--bg:#faf7fa;--paper:#ffffff;--ink:#322d35;--muted:#77707c;--accent:#98749c;--accent-dark:#775879;--soft:#f3eaf4;--line:#eae0eb}
+.app{max-width:480px;padding:calc(14px + env(safe-area-inset-top)) 16px calc(38px + env(safe-area-inset-bottom))}
+.top{padding-bottom:17px}.top .headline{font-size:clamp(22px,5.8vw,28px)}
+.home-intro{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:4px 0 13px}
+.home-intro h2{font:600 23px Georgia,serif;margin:0;color:var(--ink)}
+.progress-strip{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;background:white;border:1px solid var(--line);border-radius:18px;padding:13px 15px 12px;margin-bottom:15px;box-shadow:var(--shadow)}
+.progress-strip>div:first-child{border-right:1px solid var(--line)}
+.metric-number{display:block;font:600 27px/1.15 Georgia,serif;color:var(--accent-dark)}
+.metric-number small{font:400 13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--muted)}
+.metric-caption{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+.progress-strip-line{grid-column:1/-1;height:6px;overflow:hidden;background:#eee6ee;border-radius:20px;margin-top:8px}
+.progress-strip-line .fill{height:100%;border-radius:20px}
+.daily-primary{font-size:16px;min-height:53px;border-radius:15px;margin:0 0 9px}
+.daily-secondary{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px}
+.daily-secondary .btn{font-size:14px;min-height:48px;padding:10px 5px;gap:6px;white-space:nowrap}
+.daily-secondary .btn svg{width:17px;height:17px}
+.mini-count{background:var(--soft);border-radius:50px;padding:2px 7px}
+.current-surah{display:flex;align-items:center;gap:8px;background:var(--soft);border:1px solid #eadbea;border-radius:14px;width:100%;text-align:left;min-height:51px;padding:9px 13px;margin-bottom:13px;color:var(--accent-dark)}
+.current-surah .current-label{font-size:11px;color:var(--muted)}.current-surah strong{font-size:14px;flex:1;overflow:hidden;text-overflow:ellipsis}.current-surah>span:last-child{font-size:24px;line-height:1}
+.focus-card{padding:13px 15px}.focus-card .compact-title{margin-bottom:3px;font-size:15px}.focus-item{min-height:50px}.focus-name{font-size:14px}.focus-more{margin-top:7px}
+.home-goals{padding:13px 15px}.home-goals .compact-title{font-size:15px}.home-goals .task{min-height:45px}.goal-empty{border:0;background:var(--soft);color:var(--accent-dark);width:100%;padding:12px;text-align:left;border-radius:10px;font-weight:650}
+.home-week-mini{padding:0 8px 12px}.home-week-mini .week-mini-heading{font-size:13px;color:var(--muted);display:block;margin:2px 0 10px}.home-week-mini .week-tracker{margin:0}.week-circle{width:30px;height:30px}
+.quick-top{display:flex;align-items:center;gap:14px;padding:12px;border-radius:13px;background:white;margin-bottom:15px}.quick-top label{font-weight:650;font-size:14px}.quick-top input{min-height:40px;width:157px;max-width:65%;border:1px solid #e6dce5;border-radius:10px;font-size:16px!important;padding:7px 11px;text-align:center;background:white}
+.quick-heading{font-weight:760;font-size:18px;color:var(--accent-dark);margin:0 0 12px}.quick-kind{gap:9px;margin-bottom:12px}.quick-kind button{min-height:49px;font-size:15px}.quick-number{margin:7px 0!important}.quick-number label{font-size:13px}.quick-number select{width:100%;min-height:49px;border-radius:12px;background:white;border:1px solid var(--line);font-size:16px!important;padding:9px 10px;color:var(--ink)}
+.quick-sub{display:none;color:var(--muted);font-size:12px;margin:2px 1px 19px;overflow-wrap:anywhere}
+.quick-issue-heading{display:flex;gap:9px;align-items:center;margin-bottom:12px}.quick-issue-heading strong{font-size:15px}.quick-add{min-height:46px;margin-bottom:13px}
+#quickreviewform .optional-field{margin-top:4px}#quickreviewform .optional-field summary{min-height:44px;color:var(--accent-dark);font-size:13px}
+.quick-done-hint{text-align:center;color:var(--muted);font-size:12px;padding:12px 0 4px}
+.modal-head{background:var(--bg);position:sticky;top:-20px;z-index:2;padding:10px 0 12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.modal-quick{width:44px;height:44px;min-height:44px}.modal-quick-actions{gap:9px}.modal-quick.confirm{background:var(--accent-dark)}
+.modal{padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+.side-links .side-link{font-size:15px;min-height:49px}.side-link.active{font-weight:750}
+.surah-list .surah-row{min-height:54px;padding:10px 12px}.surah-overview{padding:12px 15px;margin-bottom:12px}.surah-counter{font-size:23px}.surah-pct{font-size:23px}
+.filter-chips{gap:6px}.filter-chip{font-size:12px;min-height:43px;padding:9px 13px}
+.diary-detailed{display:block;text-align:center;min-height:44px;width:100%;font-size:13px;padding:12px 0}
+input,select,textarea{font-size:16px!important}
+@media(max-width:365px){.app{padding-left:12px;padding-right:12px}.daily-secondary .btn{font-size:13px}.home-intro h2{font-size:21px}.metric-number{font-size:25px}.current-surah .current-label{max-width:80px}.focus-card,.home-goals{padding-left:12px;padding-right:12px}}
+
+
+/* V17 — plusieurs fautes par sourate, chaque verset enregistré indépendamment */
+.corr-group{border:1px solid var(--line);border-radius:16px;background:#fff;padding:12px;margin:10px 0}
+.corr-group-head{display:flex;gap:8px;align-items:end;justify-content:space-between}
+.corr-group-head>.field{flex:1;min-width:0;margin:2px 0 10px}
+.corr-items{display:flex;flex-direction:column;gap:9px}
+.corr-item{padding:10px;background:#faf6f9;border:1px solid #efe2eb;border-radius:12px}
+.corr-item-head{display:flex;align-items:center;justify-content:space-between;gap:7px;margin-bottom:5px}
+.corr-item-head strong{font-size:12px;color:var(--accent-dark)}
+.corr-row{display:grid;grid-template-columns:minmax(68px,88px) minmax(0,1fr);gap:9px;align-items:start}
+.corr-row .field{margin:0!important;min-width:0}
+.corr-row input,.corr-row textarea{width:100%;min-width:0;min-height:43px;padding:10px 9px;border:1px solid #e5d9e1;border-radius:11px;background:#fff;color:var(--ink)}
+.corr-row textarea{height:54px;min-height:54px;resize:vertical}
+.corr-row label{font-size:12px;margin:0 0 5px;display:block}
+.corr-remove{border:0;background:transparent;color:var(--accent-dark);font-size:12px;padding:7px 3px;min-height:38px;font-weight:650}
+.corr-add-verse{margin-top:9px;width:100%;min-height:42px;font-size:13px}
+.corr-group-head .corr-remove{margin-bottom:8px;flex:none}
+.corr-error-hint{font-size:11px;color:var(--muted);padding-top:5px}
+@media(max-width:350px){.corr-group{padding:9px}.corr-row{grid-template-columns:70px minmax(0,1fr);gap:6px}.corr-row input,.corr-row textarea{padding:9px 7px}}
+
+/* V18 — Safari iPhone : pas de zoom automatique sur les champs ou au double tap. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:auto}
+button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
+@media (pointer:coarse){
+ input:not([type="checkbox"]):not([type="radio"]),textarea,select,
+ #sessionform input,#sessionform select,#sessionform textarea,
+ .inlineinput,.vocab-search,#journal-date{font-size:16px!important}
+}
+
+
+/* V20 — Retour accueil permanent et accessible sur chaque rubrique. */
+.top{position:sticky;top:0;z-index:18;background:rgba(250,247,249,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding-top:8px;padding-bottom:13px;margin-top:-8px;margin-bottom:9px}
+.home-shortcut{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:0 11px;border:1px solid var(--line);border-radius:12px;background:#fff9ff;color:var(--accent-dark);font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer}
+.home-shortcut svg{width:19px;height:19px;flex:none}
+.home-shortcut[hidden]{display:none!important}
+.home-shortcut:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.top:has(.home-shortcut:not([hidden])) .headline{font-size:clamp(19px,5vw,26px);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:430px){.home-shortcut{width:42px;padding:0}.home-shortcut-label{display:none}}
+@media(max-width:355px){.top{gap:6px}.menu-trigger,.top-right,.home-shortcut{flex-basis:38px;width:38px;min-width:38px;height:40px;min-height:40px}.top:has(.home-shortcut:not([hidden])) .headline{font-size:20px}}
+
+/* V21 – premier démarrage simple, saisie rapide et suivi des acquis */
+.welcome-lead{margin:0 0 15px;color:var(--muted);font-size:14px;line-height:1.45}
+.welcome-option{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);background:white;border-radius:13px;margin:8px 0;font-size:14px;cursor:pointer;min-height:48px}
+.welcome-option input{accent-color:var(--accent);width:19px;height:19px;flex-shrink:0}
+.welcome-details{border:1px solid var(--line);border-radius:13px;background:white;padding:10px 12px;margin:10px 0}
+.welcome-details summary{font-weight:700;color:var(--accent-dark);cursor:pointer;padding:5px 0}
+.welcome-juz-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 8px;max-height:215px;overflow:auto;padding:8px 2px}
+.welcome-juz-grid label{display:flex;align-items:center;gap:6px;font-size:12px;min-height:38px}
+.welcome-juz-grid input{width:17px;height:17px;accent-color:var(--accent)}
+.welcome-surah-list{border:1px solid var(--line);border-radius:12px;max-height:220px;overflow-y:auto;background:white;padding:4px 10px;margin:10px 0;overscroll-behavior:contain}
+.welcome-surah-list label{display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--line);padding:7px 0;min-height:42px;font-size:13px}
+.welcome-surah-list label:last-child{border-bottom:0}
+.welcome-surah-list input{width:18px;height:18px;accent-color:var(--accent)}
+.welcome-summary{font-weight:700;color:var(--accent-dark);font-size:13px;margin:12px 0}
+.welcome-actions{display:grid;gap:8px;margin-top:14px}
+.welcome-actions .btn{min-height:48px}
+.welcome-search{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:11px;font-size:16px;margin-top:8px}
+.welcome-guide{font-size:12px;color:var(--muted);margin:8px 0}
+.backup-indicator{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px;font-size:13px;color:var(--accent-dark)}
+.mistake-followup{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:8px}
+.mistake-followup button{border:1px solid var(--line);border-radius:9px;background:white;padding:8px 11px;color:var(--accent-dark);font-size:12px;font-weight:700;min-height:39px}
+.mistake-followup button:disabled{color:var(--muted);background:#f4f0f3}
+.mistake-meta{font-size:11px;color:var(--muted);margin:5px 0}
+.quick-last{display:block;width:100%;text-align:left;border:1px dashed #d4b8cb;border-radius:11px;padding:11px 12px;background:var(--soft);color:var(--accent-dark);font-size:12px;font-weight:700;margin-bottom:10px}
+.bulk-entry{width:100%;display:flex;align-items:center;justify-content:space-between;gap:5px;padding:12px 14px;border:1px solid var(--line);background:white;border-radius:13px;color:var(--accent-dark);font-weight:700;font-size:13px;margin:12px 0}
+@media(max-width:355px){.welcome-juz-grid{grid-template-columns:1fr 1fr}.welcome-option{font-size:13px}}
+</style>
+</head>
+<body>
+<div class="app"><header class="top"><button class="home-shortcut" type="button" data-action="go-home" aria-label="Retour à l’accueil" title="Retour à l’accueil" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg><span class="home-shortcut-label">Accueil</span></button><div class="top-titles"><h1 class="headline" id="title">Mon Carnet Coran</h1><p class="sub" id="subtitle"></p></div><button class="top-right search-trigger" data-action="show-search" hidden aria-label="Rechercher une sourate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><button class="menu-trigger" type="button" data-action="open-menu" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></header><main id="main"></main></div>
+<div class="drawer-shade" id="drawer-shade" data-action="close-menu" aria-hidden="true"></div>
+<aside class="sidebar" id="sidebar" aria-label="Navigation" aria-hidden="true" inert>
+<div class="drawer-heading"><div class="eyebrow">MON CARNET CORAN ✿</div><button class="modal-close" type="button" data-action="close-menu" aria-label="Fermer le menu">×</button></div>
+<nav class="side-links" aria-label="Rubriques">
+<nav class="side-links" aria-label="Rubriques">
+<button class="side-link active" type="button" data-nav="home"><span class="side-icon" data-ico="home"></span> Accueil</button>
+<button class="side-link" type="button" data-action="quick-review"><span class="side-icon" data-ico="refresh"></span> Révision express</button>
+<button class="side-link" type="button" data-nav="learn"><span class="side-icon" data-ico="book"></span> Apprendre</button>
+<button class="side-link" type="button" data-action="surahs-review"><span class="side-icon" data-ico="target"></span> À corriger</button>
+<button class="side-link" type="button" data-action="surahs-known"><span class="side-icon" data-ico="list"></span> Mes sourates</button>
+<button class="side-link" type="button" data-nav="sessions"><span class="side-icon" data-ico="calendar"></span> Mon journal</button>
+<hr class="side-divider"><div class="side-caption">MES OUTILS</div>
+<button class="side-link" type="button" data-nav="vocab"><span class="side-icon">ع</span> Lexique</button>
+<button class="side-link" type="button" data-nav="tips"><span class="side-icon">✧</span> Astuces</button>
+<button class="side-link" type="button" data-nav="signs"><span class="side-icon">ۘ</span> Signes de lecture</button>
+
+</nav><div class="drawer-bottom"><button class="side-link" type="button" data-action="settings"><span class="side-icon">⚙</span> Paramètres</button></div>
+</aside>
+<div id="modalwrap" class="modal-wrap"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-head"><h2 id="modal-title"></h2><div class="modal-quick-actions"><button class="modal-quick cancel" type="button" aria-label="Annuler et fermer" title="Annuler" data-action="close-modal">✕</button><button class="modal-quick confirm" id="modal-confirm" type="button" aria-label="Valider et enregistrer" title="Valider" data-action="submit-modal" hidden>✓</button></div></div><div id="modalbody"></div></div></div><div class="toast" id="toast" role="status"></div>
+<script>
+'use strict';
+const ICONS={"home": "<path d=\"m3 10 9-7 9 7v10h-6v-7H9v7H3z\"/>", "book": "<path d=\"M12 6c-3-3-7-3-10-2v15c4-1 7-1 10 2 3-3 6-3 10-2V4c-3-1-7-1-10 2zm0 0v15\"/>", "list": "<path d=\"M8 5h13M8 12h13M8 19h13\"/><circle cx=\"3\" cy=\"5\" r=\".8\"/><circle cx=\"3\" cy=\"12\" r=\".8\"/><circle cx=\"3\" cy=\"19\" r=\".8\"/>", "calendar": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M7 3v5m10-5v5M3 10h18\"/>", "refresh": "<path d=\"M20 12a8 8 0 1 1-3-6M20 3v6h-6\"/>", "target": "<circle cx=\"11\" cy=\"13\" r=\"9\"/><circle cx=\"11\" cy=\"13\" r=\"5\"/><path d=\"m11 13 9-9m-2 0h3V1\"/>", "check": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m8 12 3 3 5-6\"/>", "search": "<circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"m16 16 5 5\"/>", "sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2\"/>", "moon": "<path d=\"M21 14a9 9 0 0 1-11-11 9 9 0 1 0 11 11z\"/>", "flower": "<path d=\"M12 12C1 12 2 3 8 6c1-7 8-7 8 0 6-3 7 6-4 6Zm0 0c11 0 10 9 4 6-1 7-8 7-8 0-6 3-7-6 4-6Z\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"#faf5fa\" stroke=\"none\"/>", "menu": "<path d=\"M4 6h16M4 12h16M4 18h16\"/>"};
+function ico(n){return `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]||''}</svg>`}
+function bottomNav(active){return [['home','home','Accueil'],['session','book','Ma séance'],['surahs','list','Sourates'],['sessions','calendar','Journal']].map(([id,icon,label])=>`<button class="navitem ${active===id?'active':''}" ${id==='session'?'data-action="nav-session"':`data-nav="${id}"`} ${active===id?'aria-current="page"':''}>${ico(icon)}<span>${label}</span></button>`).join('')}
+
+const NAMES=`Al-Fatiha|Al-Baqara|Al Imran|An-Nisa|Al-Maida|Al-Anam|Al-Araf|Al-Anfal|At-Tawba|Yunus|Hud|Yusuf|Ar-Rad|Ibrahim|Al-Hijr|An-Nahl|Al-Isra|Al-Kahf|Maryam|Ta-Ha|Al-Anbiya|Al-Hajj|Al-Muminun|An-Nur|Al-Furqan|Ash-Shuara|An-Naml|Al-Qasas|Al-Ankabut|Ar-Rum|Luqman|As-Sajda|Al-Ahzab|Saba|Fatir|Ya-Sin|As-Saffat|Sad|Az-Zumar|Ghafir|Fussilat|Ash-Shura|Az-Zukhruf|Ad-Dukhan|Al-Jathiya|Al-Ahqaf|Muhammad|Al-Fath|Al-Hujurat|Qaf|Adh-Dhariyat|At-Tur|An-Najm|Al-Qamar|Ar-Rahman|Al-Waqia|Al-Hadid|Al-Mujadila|Al-Hashr|Al-Mumtahana|As-Saff|Al-Jumua|Al-Munafiqun|At-Taghabun|At-Talaq|At-Tahrim|Al-Mulk|Al-Qalam|Al-Haqqa|Al-Maarij|Nuh|Al-Jinn|Al-Muzzammil|Al-Muddaththir|Al-Qiyama|Al-Insan|Al-Mursalat|An-Naba|An-Naziat|Abasa|At-Takwir|Al-Infitar|Al-Mutaffifin|Al-Inshiqaq|Al-Buruj|At-Tariq|Al-Ala|Al-Ghashiya|Al-Fajr|Al-Balad|Ash-Shams|Al-Layl|Ad-Duha|Ash-Sharh|At-Tin|Al-Alaq|Al-Qadr|Al-Bayyina|Az-Zalzala|Al-Adiyat|Al-Qaria|At-Takathur|Al-Asr|Al-Humaza|Al-Fil|Quraysh|Al-Maun|Al-Kawthar|Al-Kafirun|An-Nasr|Al-Masad|Al-Ikhlas|Al-Falaq|An-Nas`.split('|');
+const VERSE_COUNTS=[7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,111,110,98,135,112,78,118,64,77,227,93,88,69,60,34,30,73,54,45,83,182,88,75,85,54,53,89,59,37,35,38,29,18,45,60,49,62,55,78,96,29,22,24,13,14,11,11,18,12,12,30,52,52,44,28,28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6]; // Numérotation Hafs / Koufa, 6236 versets.
+const SURAH=NAMES.map((name,i)=>({id:i+1,name,verses:VERSE_COUNTS[i]}));
+function verseCount(id){return VERSE_COUNTS[Number(id)-1]||0}
+// Listes du journal : ordre du Coran (1 -> 114), sans regroupement par statut.
+// En apprentissage : sourates non commencées ou en cours ; en révision et correction :
+// uniquement celles déjà connues (maîtrisées, à renforcer, à corriger).
+function journalSurahAllowed(id,mode){
+ const status=sStatus(id);
+ if(mode==='learn')return status==='none'||status==='learning'||Number(db.currentSurah)===Number(id);
+ return status==='mastered'||status==='strengthen'||status==='correct';
+}
+function journalSurahOptions(selected,mode='learn'){
+ const chosen=Number(selected)||null;
+ // Conserver une ancienne sélection même si son statut a changé après la séance.
+ const options=SURAH.filter(s=>journalSurahAllowed(s.id,mode)||s.id===chosen);
+ const empty=mode==='learn'?'Choisir une sourate':'Choisir une sourate déjà apprise';
+ return `<option value="">${empty}</option>`+options.map(s=>{
+  const keep=s.id===chosen&&!journalSurahAllowed(s.id,mode);
+  const current=mode==='learn'&&Number(db.currentSurah)===s.id?' (en cours)':'';
+  const label=keep?' (ancienne séance)':current;
+  return `<option value="${s.id}" ${chosen===s.id?'selected':''}>${s.id}. ${esc(s.name)}${label}</option>`;
+ }).join('');
+}
+function parseDisplayDate(str){
+ const m=String(str||'').match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+ if(!m)return null;
+ const y=Number(m[3]),mo=Number(m[2]),d=Number(m[1]);const dt=new Date(y,mo-1,d,12);
+ if(dt.getFullYear()!==y||dt.getMonth()!==mo-1||dt.getDate()!==d)return null;
+ return `${m[3]}-${m[2]}-${m[1]}`;
+}
+function validateVerseText(input,surah){const max=verseCount(surah);const nums=String(input||'').match(/\d+/g)||[];return nums.every(v=>Number(v)>=1&&Number(v)<=max)}
+function setVerseBounds(selector,reset=false){
+ const area=typeof selector==='string'?document.querySelector(selector):selector;if(!area)return;
+ const su=area.querySelector('[data-verse-surah]');const id=Number(su?.value)||null;
+ const max=verseCount(id);
+ const from=area.querySelector('[data-verse-from]'),to=area.querySelector('[data-verse-to]');
+ if(!from||!to)return;
+ for(const x of [from,to]){x.max=String(max||1);x.disabled=!id;x.placeholder=max?'1–'+max:'—'}
+ if(!id){from.value='';to.value='';return}
+ if(reset){from.value='1';to.value=String(max)}
+ else{if(!from.value&&!to.value){from.value='1';to.value=String(max)}if(from.value&&Number(from.value)>max)from.value=String(max);if(to.value&&Number(to.value)>max)to.value=String(max)}
+}
+function refreshVerseBounds(){document.querySelectorAll('[data-verse-row]').forEach(row=>setVerseBounds(row,false))}
+
+// Débuts des 60 hizb (mushaf de Médine, Hafs). 2 hizb = 1 juz'.
+const HIZB_STARTS=[[1,1],[2,75],[2,142],[2,203],[2,253],[3,15],[3,93],[3,171],[4,24],[4,88],[4,148],[5,27],[5,82],[6,36],[6,111],[7,1],[7,88],[7,171],[8,41],[9,34],[9,93],[10,26],[11,6],[11,84],[12,53],[13,19],[15,1],[16,51],[17,1],[17,99],[18,75],[20,1],[21,1],[22,1],[23,1],[24,21],[25,21],[26,111],[27,56],[28,51],[29,46],[31,22],[33,31],[34,24],[36,28],[37,145],[39,32],[40,41],[41,47],[43,24],[46,1],[48,18],[51,31],[55,1],[58,1],[62,1],[67,1],[72,1],[78,1],[87,1]];
+const TOTAL_VERSES=VERSE_COUNTS.reduce((n,v)=>n+v,0);
+function previousVerse(start){if(!start)return [114,verseCount(114)];const [su,ayah]=start;return ayah>1?[su,ayah-1]:[su-1,verseCount(su-1)]}
+function reviewSpan(kind,n){
+ const num=Number(n),i=kind==='juz'?(num-1)*2:num-1;
+ if(!Number.isInteger(num)||i<0||i>=60||(kind==='juz'&&num>30)||(kind!=='juz'&&kind!=='hizb'))return null;
+ const start=HIZB_STARTS[i],end=previousVerse(HIZB_STARTS[i+(kind==='juz'?2:1)]);
+ return {kind,number:num,start,end,label:(kind==='juz'?"Juz’ ":"Hizb ")+num+' · '+ss(start[0]).name+' → '+ss(end[0]).name};
+}
+function knownSurahs(){return SURAH.filter(s=>['mastered','strengthen','correct'].includes(sStatus(s.id)))}
+// Pourcentage des sourates déjà apprises, sur les 114 sourates du Coran.
+// Les statuts « Maîtrisée », « À renforcer » et « À corriger » comptent comme appris.
+function knownPercent(){return 100*knownSurahs().length/SURAH.length}
+function openMistakes(){return db.mistakes.filter(m=>!m.resolved).sort((a,b)=>(b.date||'').localeCompare(a.date||''))}
+function attentionSurahs(){const ids=new Set(openMistakes().map(x=>Number(x.surah)));return SURAH.filter(s=>ids.has(s.id)||['correct','strengthen'].includes(sStatus(s.id)))}
+
+const STATUS={none:'Non commencée',learning:'En apprentissage',correct:'À corriger',strengthen:'À renforcer',mastered:'Maîtrisée'};
+const TYPES={memorisation:'Mémorisation',revision:'Révision',mixte:'Apprentissage + révision',correction:'Correction',test:'Test de récitation'};
+const DBKEY='carnet-coran-violet-v5';
+const DIN_VOCAB=[];
+function localToday(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+const today=localToday();let db={sessions:[],goals:[],mistakes:[],statuses:{},statusHistory:[],currentSurah:null,vocab:[],guided:null,dinSeeded:false,onboarded:false,lastBackupAt:null};let storeOK=true,hadStoredData=false;
+try{const saved=localStorage.getItem(DBKEY);if(saved){hadStoredData=true;const v=JSON.parse(saved);if(v&&typeof v==='object')db={...db,...v};if(!Array.isArray(db.vocab))db.vocab=[]}}catch(e){storeOK=false}
+function save(){try{localStorage.setItem(DBKEY,JSON.stringify(db));storeOK=true}catch(e){storeOK=false;toast('Sauvegarde locale indisponible : exporte tes données depuis ⚙')}}
+function uid(){return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2,9)}`}
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ss=id=>SURAH.find(x=>x.id===Number(id))||SURAH[0];
+const showDate=s=>{if(!s)return '';let p=s.split('-');return p.length===3?`${p[2]}/${p[1]}/${p[0]}`:s};
+const sStatus=id=>db.statuses[id]||'none';
+function statusPill(st){const cls={none:'gray',learning:'',correct:'red',strengthen:'orange',mastered:'green'}[st]||'';return `<span class="pill ${cls}">${esc(STATUS[st]||STATUS.none)}</span>`}
+function surahOptions(selected){return `<option value="">Choisir une sourate</option>`+SURAH.map(s=>`<option value="${s.id}" ${Number(selected)===s.id?'selected':''}>${s.id}. ${esc(s.name)}</option>`).join('')}
+function toast(txt){const el=document.querySelector('#toast');el.textContent=txt;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2900)}
+
+function convertDin(data){
+  if(!data||!data.quranJournal||!data.surahs)throw Error('Sauvegarde Mon Espace Dîn non reconnue');
+  const statusMap={acquise:'mastered',revision:'strengthen',apprentissage:'learning',correction:'correct'};
+  const statuses={};
+  Object.entries(data.surahs).forEach(([n,s])=>{if(statusMap[s])statuses[n]=statusMap[s]});
+  const sessions=data.quranJournal.map((j,i)=>{
+    const revs=(j.revisions||[]).map(r=>({surah:Number(r.surah),from:r.from||'',to:r.to||''}));
+    const learning=Number(j.learnSurah)||null;
+    const surah=learning||revs[0]?.surah||null;
+    const notes=[j.learnNotes?'Apprentissage : '+j.learnNotes:'',j.reviseNotes?'Révision : '+j.reviseNotes:'',j.attention?'À surveiller : '+j.attention:''].filter(Boolean).join('\n\n');
+    return {id:'din-'+(j.id||i),date:j.date,surah,
+      type:learning&&revs.length?'mixte':learning?'memorisation':'revision',
+      learnSurah:learning,learnFrom:j.learnFrom||'',learnTo:j.learnTo||'',learnNotes:j.learnNotes||'',
+      revisions:revs,reviseNotes:j.reviseNotes||'',attention:j.attention||'',vocabIds:[],
+      verses:j.learnFrom?(j.learnFrom+(j.learnTo?'–'+j.learnTo:'')):'',
+      notes,duration:null,errorVerse:'',errorNote:'',source:'Mon Espace Dîn',createdAt:j.date+'T12:00:00'};
+  });
+  const vocab=DIN_VOCAB.map((w,i)=>({id:'din-word-'+i,...w,known:false,source:'Anciennes notes'}));
+  return {statuses,sessions,mistakes:[],vocab,currentSurah:Number([...data.quranJournal].reverse().find(j=>j.learnSurah)?.learnSurah)||null};
+}
+let view='home',selectedSurah=null,goalDate=today,journalDate=today,sessionFilter='',surahSearch='',showSurahSearch=false,surahFilter='review',tipSelected='531',vocabFilter='all',vocabSearch='';
+function openMenu(){const s=document.querySelector('#sidebar');document.body.classList.add('drawer-open');s.inert=false;s.setAttribute('aria-hidden','false');document.querySelector('.menu-trigger').setAttribute('aria-expanded','true');}
+function closeMenu(){const s=document.querySelector('#sidebar');document.body.classList.remove('drawer-open');s.inert=true;s.setAttribute('aria-hidden','true');document.querySelector('.menu-trigger').setAttribute('aria-expanded','false');}
+
+// A juz can cross a surah boundary. Count only whole surahs inside the chosen juz;
+// partial boundary surahs can be checked individually in the same form.
+function fullSurahsInJuz(juz){
+ const n=Number(juz),start=HIZB_STARTS[(n-1)*2],next=HIZB_STARTS[n*2]||[115,1];
+ if(!Number.isInteger(n)||n<1||n>30||!start)return [];
+ const out=[];
+ for(const surah of SURAH){
+  const startsAfter=surah.id>start[0]||(surah.id===start[0]&&start[1]===1);
+  const endsBefore=surah.id<next[0];
+  if(startsAfter&&endsBefore)out.push(surah.id);
+ }
+ return out;
+}
+function onboardingSelected(){
+ const modalEl=document.querySelector('#setupform');if(!modalEl)return [];
+ const ids=new Set([...modalEl.querySelectorAll('[data-setup-surah]:checked')].map(el=>Number(el.value)));
+ for(const c of modalEl.querySelectorAll('[data-setup-juz]:checked'))fullSurahsInJuz(c.value).forEach(id=>ids.add(id));
+ return [...ids].sort((a,b)=>a-b);
+}
+function onboardingPreview(){const el=document.querySelector('#setup-count');if(el)el.textContent=onboardingSelected().length+' sourate(s) sélectionnée(s)';}
+function showWelcome(){
+ const high=[30,29];
+ const makeJuz=n=>`<label><input type="checkbox" data-setup-juz value="${n}"><span>Juz’ ${n}${n===30?' · ‘Amma':n===29?' · Tabârak':''}</span></label>`;
+ modal('Mes sourates apprises',`<form id="setupform"><p class="welcome-lead">Sélectionne ce que tu connais déjà. Tu pourras tout modifier plus tard.</p>
+ <label class="welcome-option"><input type="radio" name="setup-mode" value="known" checked>J'ai déjà appris des sourates</label>
+ <label class="welcome-option"><input type="radio" name="setup-mode" value="new">Je commence à apprendre</label>
+ <div id="setup-known">
+ <div class="label" style="margin:13px 0 7px">Sélection rapide</div>
+ ${high.map(makeJuz).map(x=>`<div class="welcome-option" style="padding:6px 10px">${x}</div>`).join('')}
+ <details class="welcome-details"><summary>Autres juz’ (1 à 28)</summary><div class="welcome-juz-grid">${Array.from({length:28},(_,i)=>makeJuz(i+1)).join('')}</div></details>
+ <details class="welcome-details"><summary>Ajouter des sourates une par une</summary><input id="setup-search" class="welcome-search" placeholder="Rechercher…" aria-label="Rechercher une sourate"><div class="welcome-surah-list">${SURAH.map(s=>`<label data-setup-surah-row data-name="${esc((s.id+' '+s.name).toLowerCase())}"><input type="checkbox" data-setup-surah value="${s.id}">${s.id}. ${esc(s.name)}</label>`).join('')}</div></details>
+ <div class="welcome-summary" id="setup-count" aria-live="polite">0 sourate(s) sélectionnée(s)</div>
+ <p class="welcome-guide">Un juz’ peut commencer ou se terminer au milieu d’une sourate : seules les sourates entièrement comprises seront cochées automatiquement. Tu peux ajouter les autres à la main.</p>
+ </div>
+ <div class="welcome-actions"><button type="submit" class="btn full">Enregistrer mes acquis ✓</button><button type="button" class="btn ghost full" data-action="setup-skip">Plus tard</button></div>
+ </form>`);
+ const form=document.querySelector('#setupform');
+ form.addEventListener('change',e=>{
+  if(e.target.name==='setup-mode'){document.querySelector('#setup-known').hidden=e.target.value==='new';}
+  onboardingPreview();
+ });
+ form.addEventListener('input',e=>{
+  if(e.target.id==='setup-search'){
+   const q=e.target.value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+   document.querySelectorAll('[data-setup-surah-row]').forEach(row=>{row.hidden=!row.dataset.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(q)});
+  }
+ });
+ form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const mode=form.querySelector('input[name="setup-mode"]:checked').value;
+  const ids=mode==='known'?onboardingSelected():[];
+  for(const id of ids){
+   // Do not overwrite an earlier "to correct" or "to strengthen" classification.
+   if(!['mastered','correct','strengthen'].includes(sStatus(id))){db.statuses[id]='mastered';db.statusHistory.push({id:uid(),date:today,surah:id,status:'mastered'});}
+  }
+  db.onboarded=true;save();closeModal();surahFilter=ids.length?'known':'review';nav(ids.length?'surahs':'home');
+  toast(ids.length?ids.length+' sourates ajoutées ✓':'Carnet prêt ✓');
+ });
+}
+
+function weekDates(){const start=new Date(today+'T12:00:00');start.setDate(start.getDate()-(start.getDay()+6)%7);return Array.from({length:7},(_,i)=>{const x=new Date(start);x.setDate(start.getDate()+i);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`})}
+function weekTracker(){let days=weekDates();return `<div class="section-title">Cette semaine</div><div class="week-tracker">${days.map((date,i)=>{const done=db.sessions.some(s=>s.date===date)||db.goals.some(g=>g.date===date&&g.done);return `<div class="week-day"><span>${['L','M','M','J','V','S','D'][i]}</span><span class="week-circle ${done?'complete':''}" title="${date}">${done?'✓':'•'}</span></div>`}).join('')}</div>`}
+// La liste retrouve exactement son défilement quand on revient d'une fiche.
+const scrollMemory=Object.create(null);
+function scrollKey(){return view==='surahs'&&selectedSurah?'surahs-detail-'+selectedSurah:view}
+function rememberScroll(){scrollMemory[scrollKey()]=window.scrollY||document.documentElement.scrollTop||0}
+function restoreScroll(key,top=0){requestAnimationFrame(()=>window.scrollTo({top:scrollMemory[key]??top,behavior:'instant'}))}
+function nav(to){rememberScroll();closeMenu();view=to;selectedSurah=null;document.querySelectorAll('[data-nav]').forEach(x=>x.classList.toggle('active',x.dataset.nav===to));render();restoreScroll(scrollKey())}
+function render(){
+  let title={home:'Mon Carnet Coran',learn:'Apprentissage',surahs:selectedSurah?ss(selectedSurah).name:'Mes sourates',sessions:'Mon journal',tips:'Mes astuces',vocab:'Mon lexique',signs:'Signes de lecture'}[view];
+  document.querySelector('#title').innerHTML=(view==='home'?ico('flower'):'')+esc(title);
+  document.querySelector('.home-shortcut').hidden=(view==='home');
+  document.querySelector('.search-trigger').hidden=!(view==='surahs'&&!selectedSurah);
+  document.querySelector('#subtitle').textContent='';
+  
+  document.querySelectorAll('[data-nav]').forEach(x=>x.classList.toggle('active',x.dataset.nav===view));
+  document.querySelector('#main').innerHTML=view==='home'?home():view==='learn'?learnPage():view==='surahs'?(selectedSurah?surahDetail(selectedSurah):surahList()):view==='sessions'?sessionsPage():view==='vocab'?vocabPage():view==='signs'?signsPage():tipsPage();
+}
+function home(){
+ const known=knownSurahs().length, percent=knownPercent(), issues=attentionSurahs();
+ const goals=db.goals.filter(g=>g.date===goalDate);
+ const learning=db.guided?.surah||db.currentSurah;
+ return `<div class="home-intro"><h2>Ma mémorisation</h2><span class="small muted">${showDate(today)}</span></div>
+ <div class="progress-strip"><div><span class="metric-number">${known}<small> / 114</small></span><span class="metric-caption">Sourates apprises</span></div><div><span class="metric-number">${percent.toFixed(1).replace('.',',')}<small> %</small></span><span class="metric-caption">Sourates apprises</span></div><div class="progress-strip-line"><div class="fill" style="width:${percent.toFixed(3)}%"></div></div></div>
+ <button class="btn full daily-primary" data-action="quick-review">${ico('refresh')} Enregistrer une révision</button>
+ <div class="daily-secondary"><button class="btn ghost" data-nav="learn">${ico('book')} Apprendre</button><button class="btn ghost" data-action="surahs-review">${ico('target')} À corriger ${issues.length?`<span class="mini-count">${issues.length}</span>`:''}</button></div>
+ ${learning?`<button class="current-surah" data-nav="learn"><span class="current-label">En apprentissage</span><strong>${esc(ss(learning).name)}</strong><span aria-hidden="true">›</span></button>`:''}
+ <section class="card home-goals"><div class="compact-title">${ico('check')}<b>Mes objectifs du jour</b><button class="mini-add" data-action="add-goal" aria-label="Ajouter un objectif">＋</button></div>
+ ${goals.length?goals.map(g=>`<label class="task ${g.done?'done':''}"><input class="tick" type="checkbox" data-goal="${esc(g.id)}" ${g.done?'checked':''}><span class="tasktext grow">${esc(g.text)}</span><button type="button" class="goal-remove" data-action="delete-goal" data-id="${esc(g.id)}" aria-label="Supprimer l’objectif">×</button></label>`).join(''):'<button class="goal-empty" data-action="add-goal">＋ Ajouter un objectif</button>'}</section>
+ <section class="home-week-mini">${weekTracker().replace('<div class="section-title">Cette semaine</div>','<b class="week-mini-heading">Cette semaine</b>')}</section>`;
+}
+
+function surahList(){
+ const q=surahSearch.trim().toLowerCase();
+ const attention=new Set(attentionSurahs().map(s=>s.id));
+ const filtered=SURAH.filter(s=>{
+  const st=sStatus(s.id),fits=surahFilter==='all'||(surahFilter==='known'?['mastered','strengthen','correct'].includes(st):surahFilter==='review'?attention.has(s.id):st===surahFilter);
+  return fits&&(!q||(`${s.id} ${s.name}`).toLowerCase().includes(q)||s.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(q));
+ });
+ const filters=[['review','À corriger'],['known','Apprises'],['learning','En cours'],['all','Toutes']];
+ const pct=knownPercent().toFixed(1).replace('.',',');
+ return `<div class="surah-overview card"><div class="row between"><div><span class="label">Mon évolution</span><div class="surah-counter">${knownSurahs().length} <span>/ 114 sourates</span></div></div><div class="surah-pct">${pct} %<div class="small muted" style="font-size:11px;font-family:Arial,sans-serif;text-align:right">des sourates</div></div></div><div class="progress"><div class="fill" style="width:${knownPercent().toFixed(3)}%"></div></div></div>
+ ${showSurahSearch||surahSearch?`<div class="searchrow"><input class="inlineinput" placeholder="Rechercher une sourate…" id="surah-search" value="${esc(surahSearch)}"></div>`:''}
+ <button class="bulk-entry" type="button" data-action="setup-acquis">✓ Ajouter plusieurs sourates apprises <span aria-hidden="true">›</span></button>
+ <div class="filter-chips" aria-label="Mes sourates">${filters.map(([id,label])=>`<button class="filter-chip ${surahFilter===id?'active':''}" data-action="filter-surah" data-id="${id}" aria-pressed="${surahFilter===id}">${label}</button>`).join('')}</div>
+ <div class="surah-list">${filtered.length?filtered.map(s=>{const errors=openMistakes().filter(m=>Number(m.surah)===s.id).length;return `<button class="surah-row" data-action="open-surah" data-id="${s.id}"><span class="surah-list-name">${s.id}. ${esc(s.name)}</span>${errors?`<span class="pill red">${errors} erreur${errors>1?'s':''}</span>`:statusPill(sStatus(s.id))}<span class="arrow">›</span></button>`}).join(''):`<div class="empty">${surahFilter==='review'?'Aucune sourate à travailler actuellement.':'Aucune sourate dans cette catégorie.'}</div>`}</div>`;
+}
+function mistakeStats(m){
+ const reported=db.mistakes.filter(x=>Number(x.surah)===Number(m.surah)&&String(x.verse).trim()===String(m.verse).trim()).length;
+ const tests=[...new Set(m.successDates||[])].sort();
+ return {reported,successfulDays:tests.length,checkedToday:tests.includes(today)};
+}
+function mistakeItem(m){
+ const st=mistakeStats(m);
+ return `<div class="listitem"><div class="row between"><span class="pill ${m.resolved?'green':'red'}">${m.resolved?'Corrigé':'À travailler'}${m.verse?' · v. '+esc(m.verse):''}</span><button class="tinybtn" data-action="toggle-mistake" data-id="${esc(m.id)}">${m.resolved?'Remettre à revoir':'Marquer corrigé'}</button></div>
+ <p class="note-line">${esc(m.note||'Passage à travailler')}</p>
+ <div class="mistake-meta">${st.reported>1?st.reported+' signalements sur ce verset · ':''}${st.successfulDays?st.successfulDays+' jour(s) de récitation réussie · ':''}Noté le ${showDate(m.date)}</div>
+ ${!m.resolved?`<div class="mistake-followup"><button type="button" data-action="check-mistake" data-id="${esc(m.id)}" ${st.checkedToday?'disabled':''}>${st.checkedToday?'✓ Réussi aujourd’hui':'✓ Réussi sans regarder'}</button><button class="tinybtn" data-action="delete-mistake" data-id="${esc(m.id)}">Supprimer</button></div>`:`<button class="tinybtn" data-action="delete-mistake" data-id="${esc(m.id)}">Supprimer</button>`}</div>`;
+}
+function surahDetail(id){const s=ss(id),mistakes=db.mistakes.filter(x=>x.surah===Number(id)).sort((a,b)=>b.date.localeCompare(a.date)),sess=db.sessions.filter(x=>x.surah===Number(id)||(x.revisions||[]).some(r=>Number(r.surah)===Number(id))).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,4);return `<button class="linkbtn" data-action="back-surah">← Toutes les sourates</button><div class="card tinted" style="margin-top:13px"><div class="label">Sourate n° ${s.id}</div><div class="big">${esc(s.name)}</div><div class="small muted" style="margin:10px 0">Quel est son état actuel ?</div><div class="statusbox">${Object.keys(STATUS).map(st=>`<button data-action="set-status" data-id="${s.id}" data-status="${st}" class="${sStatus(id)===st?'selected':''}">${esc(STATUS[st])}</button>`).join('')}</div><div class="row between" style="margin-top:13px"><button class="linkbtn" data-action="set-current" data-id="${s.id}">${db.currentSurah===id?'✓ Sourate en cours':'Définir comme sourate en cours'}</button></div>${journalSurahAllowed(id,'learn')?`<button class="btn soft full" data-action="guided-from-surah" data-id="${s.id}" style="margin-top:8px">Apprendre cette sourate</button>`:''}</div><div class="section-title">Versets et erreurs <small>${mistakes.filter(m=>!m.resolved).length} à revoir</small></div><div class="card">${mistakes.length?mistakes.map(mistakeItem).join(''):'<p class="small muted">Aucune erreur enregistrée pour cette sourate.</p>'}<button class="btn soft full" data-action="new-mistake" data-id="${s.id}" style="margin-top:12px">＋ Noter une erreur</button></div><div class="section-title">Dernières séances</div><div class="card">${sess.length?sess.map(x=>`<div class="listitem"><div class="row between"><strong class="small">${esc(TYPES[x.type]||x.type)}</strong><button class="tinybtn" data-action="edit-session" data-id="${x.id}">${showDate(x.date)} · Modifier</button></div><div class="small muted">${esc(x.verses||'Passage non précisé')}</div></div>`).join(''):'<p class="small muted">Pas encore de séance enregistrée.</p>'}<button class="btn full" style="margin-top:12px" data-action="new-session" data-id="${s.id}">＋ Enregistrer une séance</button></div>`}
+function dayShift(ymd,n){const d=new Date(ymd+'T12:00:00');d.setDate(d.getDate()+n);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function longDate(date){return new Date(date+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+function sessionCard(x,index){
+ const mistakes=db.mistakes.filter(m=>m.sessionId===x.id);const words=(x.vocabIds||[]).map(id=>db.vocab.find(w=>w.id===id)).filter(Boolean);
+ const line=(icon,label,detail)=>`<div class="entry-line">${ico(icon)}<div><b>${label}</b> ${detail}</div></div>`;
+ const range=(from,to)=>from?` (${esc(from)}${to&&String(to)!==String(from)?'–'+esc(to):''})`:'';
+ return `<article class="diary-entry"><div class="entry-banner">${ico('book')}<b>${x.reviewBlocks?.length?'Révision express':'Séance '+(index+1)}</b><button class="entry-edit" data-action="edit-session" data-id="${esc(x.id)}" aria-label="Modifier la séance">✎</button></div>
+ ${x.learnSurah?line('book','J’ai appris :',esc(ss(x.learnSurah).name)+range(x.learnFrom,x.learnTo)):''}
+ ${x.reviewBlocks?.length?line('refresh','J’ai révisé :',x.reviewBlocks.map(b=>esc(b.label||reviewSpan(b.kind,b.number)?.label||'Révision')).join(' · ')):''}
+ ${x.revisions?.length?line('refresh','J’ai révisé :',x.revisions.map(r=>esc(ss(r.surah).name)+range(r.from,r.to)).join(' · ')):''}
+ ${mistakes.length?line('target','À corriger :',renderSessionMistakes(mistakes)):x.attention||x.errorNote?line('target','À corriger :',esc(x.attention||x.errorNote)):''}
+ ${words.length?line('book','Vocabulaire :',words.map(w=>`<span lang="ar" dir="rtl">${esc(w.arabic)}</span> · ${esc(w.meaning)}`).join(' · ')):''}
+ ${x.learnNotes||x.reviseNotes||(!x.learnSurah&&!x.revisions?.length&&x.notes)||x.duration?`<details class="entry-notes"><summary>Notes et détails</summary>${x.learnNotes?`<p class="note-line">${esc(x.learnNotes)}</p>`:''}${x.reviseNotes?`<p class="note-line">${esc(x.reviseNotes)}</p>`:''}${!x.learnSurah&&!x.revisions?.length&&x.notes?`<p class="note-line">${esc(x.notes)}</p>`:''}${x.duration?`<p class="note-line">${esc(x.duration)} min</p>`:''}</details>`:''}
+ <button class="entry-delete" data-action="delete-session" data-id="${esc(x.id)}">Supprimer</button></article>`;
+}
+function sessionsPage(){
+ const date=journalDate||today,entries=db.sessions.filter(s=>s.date===date).sort((a,b)=>String(a.createdAt||'').localeCompare(String(b.createdAt||'')));
+ return `<div class="diary-navigation"><button type="button" class="diary-arrow" data-action="journal-prev" aria-label="Jour précédent">‹</button><label class="journal-date-control"><span>${showDate(date)}</span><input type="date" id="journal-date" value="${date}" max="${today}" aria-label="Choisir une date"></label><button type="button" class="diary-arrow" data-action="journal-next" aria-label="Jour suivant" ${date>=today?'disabled':''}>›</button></div>
+ ${entries.length?entries.map(sessionCard).join(''):'<div class="empty journal-empty">Aucune séance ce jour.</div>'}<button class="btn full diary-add" data-action="quick-review">＋ Révision express</button><button class="linkbtn diary-detailed" data-action="new-session">＋ Ajouter une séance détaillée</button>${date!==today?'<button class="linkbtn today-link" data-action="journal-today">Aujourd’hui</button>':''}`;
+}
+const TIPS={531:{title:'Je bloque sur un verset',subtitle:'Méthode 5 – 3 – 1',steps:[['Lecture attentive','Lis le verset, observe les mots exacts et prends le temps de comprendre où tu bloques.'],['5 répétitions','Récite 5 fois le verset corrigé, en essayant de ne pas regarder.'],['3 enchaînements','Récite 3 fois le verset précédent, le verset difficile et le suivant.'],['1 récitation entière','Récite une fois la sourate entière sans regarder, puis reteste ce passage plus tard.']]},mix:{title:'Je confonds deux versets',subtitle:'Comparer avant de répéter',steps:[['Mettre côte à côte','Repère les deux passages dans ton mushaf.'],['Identifier la différence','Note précisément le mot, l’ordre ou la terminaison qui change.'],['Répéter séparément','Récite chaque passage 3 fois en associant ses mots distinctifs.'],['Tester sans regarder','Fais un test aléatoire sur chacun, puis vérifie demain.']]},forget:{title:'J’oublie une sourate',subtitle:'Révision ciblée',steps:[['Récitation test','Récite une fois sans regarder et note chaque blocage.'],['Correction isolée','Retravaille uniquement les passages où tu as hésité ou fait une erreur.'],['Reprise complète','Récite toute la sourate une fois.'],['Révision espacée','Refais un petit test demain, puis dans trois jours.']]},daily:{title:'Je veux mieux réviser',subtitle:'Petit rituel quotidien',steps:[['Anciennes sourates','Révise quelques sourates déjà apprises.'],['Passages fragiles','Consacre quelques minutes aux erreurs du carnet.'],['Nouveau passage','Avance dans ton objectif d’apprentissage.'],['Mini-bilan','Enregistre ta séance et ce qu’il faudra retravailler.']]}};
+function tipsPage(){let t=TIPS[tipSelected];return `<div class="notice">Choisis ton problème, applique la technique et enregistre ensuite ta séance.</div><div class="tip-tab">${Object.entries(TIPS).map(([id,v])=>`<button class="selecttip ${id===tipSelected?'active':''}" data-action="choose-tip" data-id="${id}">${esc(v.title)}</button>`).join('')}</div><div class="card" style="margin-top:15px"><div class="label">${esc(t.subtitle)}</div><h2 style="font-family:Georgia,serif;font-size:23px;font-weight:500;margin:7px 0 19px">${esc(t.title)}</h2>${t.steps.map(([title,description],i)=>`<div class="tipstep"><span class="tipnum">${i+1}</span><div><strong>${esc(title)}</strong><p>${esc(description)}</p></div></div>`).join('')}</div><button class="btn full" data-action="new-session">＋ Enregistrer ma séance de correction</button><p class="footer-note">Les conseils complètent les corrections de ta professeure.</p>`}
+
+// Arabic alphabetic ordering, ignoring vocalisation and the common definite article « al- ».
+const ARCOLL=new Intl.Collator('ar',{usage:'sort',sensitivity:'base',numeric:false});
+function normAr(t){return String(t||'').normalize('NFKD').replace(/[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/ة/g,'ه').trim()}
+function arKey(t){let n=normAr(t);return n.startsWith('ال')&&n.length>3?n.slice(2):n}
+function arLetter(t){return arKey(t).charAt(0)||'؟'}
+function vocabPage(){
+  const known=db.vocab.filter(x=>x.known).length;
+  let filtered=db.vocab.filter(w=>(vocabFilter==='all'||(vocabFilter==='known'?!!w.known:!w.known))&&(
+    !vocabSearch||[w.arabic,w.meaning,w.note,w.verse,w.surah?ss(w.surah).name:''].some(v=>normAr(v).toLowerCase().includes(normAr(vocabSearch).toLowerCase()))
+  )).sort((a,b)=>ARCOLL.compare(arKey(a.arabic),arKey(b.arabic))||ARCOLL.compare(a.arabic,b.arabic));
+  let groups={};filtered.forEach(w=>{let letter=arLetter(w.arabic);(groups[letter]??=[]).push(w)});
+  return `<div class="card tinted"><span class="label">Mon vocabulaire coranique</span><div class="metricgrid"><div class="metric"><strong>${db.vocab.length}</strong><small>mots enregistrés</small></div><div class="metric"><strong>${known}</strong><small>connus</small></div><div class="metric"><strong>${db.vocab.length-known}</strong><small>à réviser</small></div></div></div>
+  <button class="btn full" data-action="new-word">＋ Ajouter un mot arabe</button>
+  <div class="section-title">Mon lexique <small>${filtered.length} mot${filtered.length===1?'':'s'}</small></div>
+  <input class="vocab-search" id="vocab-search" type="search" aria-label="Rechercher dans le lexique" placeholder="Rechercher un mot en arabe ou en français…" value="${esc(vocabSearch)}">
+  <div class="vocab-quick" style="margin:12px 0 18px"><button data-action="vocab-filter" data-id="all" class="${vocabFilter==='all'?'active':''}">Tous</button><button data-action="vocab-filter" data-id="review" class="${vocabFilter==='review'?'active':''}">À réviser</button><button data-action="vocab-filter" data-id="known" class="${vocabFilter==='known'?'active':''}">Connus</button></div>
+  ${filtered.length?Object.keys(groups).map(letter=>`<div class="vocab-alpha" dir="rtl">${esc(letter)}</div><div class="card" style="padding:5px 15px">${groups[letter].map(w=>`<div class="vocab-entry"><div><div class="vocab-meaning">${esc(w.meaning)}</div><div class="small muted" style="margin-top:4px">${w.surah?esc(ss(w.surah).name):'Sourate non précisée'}${w.verse?' · v. '+esc(w.verse):''}</div>${w.note?`<p class="note-line">${esc(w.note)}</p>`:''}<div style="margin-top:7px"><span class="pill ${w.known?'green':'orange'}">${w.known?'Connu':'À réviser'}</span></div></div><div class="vocab-word" lang="ar" dir="rtl">${esc(w.arabic)}</div><div style="grid-column:1/-1" class="row between"><button class="linkbtn" data-action="toggle-word" data-id="${esc(w.id)}">${w.known?'Remettre à réviser':'✓ Je connais ce mot'}</button><div><button class="tinybtn" data-action="edit-word" data-id="${esc(w.id)}">Modifier</button><button class="tinybtn" data-action="delete-word" data-id="${esc(w.id)}">Suppr.</button></div></div></div>`).join('')}</div>`).join(''):'<div class="empty">Aucun mot trouvé. Ajoute un mot pour commencer ton lexique.</div>'}
+  `;
+}
+function wordModal(id){
+  const w=db.vocab.find(x=>x.id===id);
+  modal(w?'Modifier mon mot':'Ajouter un mot au lexique',`<form id="wordform"><div class="field"><label for="w-arabic">Mot en arabe *</label><input lang="ar" dir="rtl" class="arabic-input" id="w-arabic" required maxlength="130" placeholder="مثال: الْيَقِينِ" value="${esc(w?.arabic||'')}"></div><div class="field"><label for="w-meaning">Signification en français *</label><input id="w-meaning" required maxlength="220" placeholder="Ex. : certitude" value="${esc(w?.meaning||'')}"></div><div class="fieldline"><div class="field"><label for="w-surah">Sourate (facultatif)</label><select id="w-surah">${surahOptions(w?.surah)}</select></div><div class="field"><label for="w-verse">Verset</label><input id="w-verse" maxlength="30" placeholder="Ex. : 5" value="${esc(w?.verse||'')}"></div></div><div class="field"><label for="w-note">Mes notes (facultatif)</label><textarea id="w-note" placeholder="Prononciation, contexte, rappel...">${esc(w?.note||'')}</textarea></div><div class="modal-actions"><button class="btn ghost" type="button" data-action="close-modal">Annuler</button><button class="btn" type="submit">${w?'Enregistrer':'Ajouter au lexique'}</button></div></form>`);
+  document.querySelector('#wordform').addEventListener('submit',e=>{
+    e.preventDefault();const arabic=document.querySelector('#w-arabic').value.trim(),meaning=document.querySelector('#w-meaning').value.trim();
+    if(!arabic||!meaning)return;
+    if(!/[\u0621-\u064A]/.test(arabic)){toast('Écris le mot en arabe pour le classer');return}
+    const item={id:w?.id||uid(),arabic,meaning,surah:Number(document.querySelector('#w-surah').value)||null,verse:document.querySelector('#w-verse').value.trim(),note:document.querySelector('#w-note').value.trim(),known:w?.known||false};
+    if(w)Object.assign(w,item);else db.vocab.push(item);
+    save();closeModal();nav('vocab');toast(w?'Mot modifié':'Mot ajouté au lexique ✓');
+  });
+}
+
+const WAQF_SIGNS=[
+{mark:'م',name:'Arrêt nécessaire',text:'Arrête-toi : la liaison peut modifier le sens.'},
+{mark:'لا',name:'Ne pas s’arrêter',text:'Continue si tu es au milieu du verset. En cas d’arrêt forcé, reprends correctement.'},
+{mark:'ج',name:'Arrêt permis',text:'Tu peux t’arrêter ou continuer.'},
+{mark:'قلى',name:'Mieux vaut s’arrêter',text:'L’arrêt est préférable, mais la liaison reste permise.'},
+{mark:'صلى',name:'Mieux vaut continuer',text:'La liaison est préférable, mais l’arrêt reste permis.'},
+{mark:'∴ ∴',name:'Deux arrêts liés',text:'Arrête-toi à un seul des deux emplacements, pas aux deux.'},
+{mark:'س',name:'Saktah',text:'Très courte pause sans reprendre ton souffle.'},
+{mark:'۝',name:'Fin du verset',text:'Marque la fin d’une âyah. Tu peux t’y arrêter.'},
+{mark:'۩',name:'Sajda',text:'Signale un verset de prosternation de récitation (sujûd at-tilâwa).'},
+{mark:'۞',name:'Rubʿ al-hizb',text:'Repère de division du Coran en quarts de hizb, pas un signe d’arrêt.'}
+];
+function signsPage(){return `<div class="section-title" style="margin-top:0">Signes dans le mushaf</div><div class="signs-list">${WAQF_SIGNS.map(s=>`<div class="signcard"><span class="signsymbol" lang="ar" dir="rtl">${esc(s.mark)}</span><div class="signinfo"><strong>${esc(s.name)}</strong><small>${esc(s.text)}</small></div></div>`).join('')}</div><p class="signs-source">Signes du mushaf de Médine (lecture Ḥafṣ) ; leur présentation peut varier selon l’édition.<br><a href="https://www.islamweb.net/en/fatwa/273400/explanation-of-the-stop-markers-in-mus-haf-al-madeenah" target="_blank" rel="noopener">Référence : signes d’arrêt</a></p>`}
+function modal(title,body){document.querySelector('#modal-title').textContent=title;document.querySelector('#modalbody').innerHTML=body;const wrap=document.querySelector('#modalwrap');const isSession=!!document.querySelector('#sessionform');wrap.classList.toggle('session-screen',isSession);document.querySelector('#modal-confirm').hidden=!document.querySelector('#modalbody form');document.querySelector('#modalwrap').classList.add('show');document.body.style.overflow='hidden';document.querySelector('.modal').scrollTop=0}
+function closeModal(){document.querySelector('#modalwrap').classList.remove('show','session-screen');document.body.style.overflow='' }
+// Révision rapide : un choix, les erreurs si besoin, puis ✓ pour enregistrer.
+function quickReviewModal(id=null){
+ const old=db.sessions.find(x=>x.id===id),prev=old?.reviewBlocks?.[0];
+ const kind=prev?.kind||'juz',num=prev?Number(prev.number):0;
+ const recent=db.sessions.filter(s=>s.reviewBlocks?.length).sort((a,b)=>String(b.createdAt||b.date).localeCompare(String(a.createdAt||a.date)))[0]?.reviewBlocks?.[0];
+ const corrections=old?db.mistakes.filter(m=>m.sessionId===old.id):[];
+ const date=showDate(old?.date||(view==='sessions'?journalDate:today));
+ modal(old?'Modifier ma révision':'Ma révision',`<form id="quickreviewform">
+ <div class="quick-top"><label for="q-date">Date</label><input id="q-date" type="text" inputmode="numeric" maxlength="10" required placeholder="JJ/MM/AAAA" value="${esc(date)}"></div>
+ <div class="quick-heading">J’ai révisé</div>
+ ${!old&&recent?`<button type="button" class="quick-last" data-action="quick-last">↻ Même passage que la dernière fois : ${esc(recent.label||reviewSpan(recent.kind,recent.number)?.label||'')}</button>`:''}
+ <div class="quick-kind" role="group" aria-label="Quantité révisée"><button type="button" data-action="quick-kind" data-kind="juz" class="${kind==='juz'?'active':''}">Un juz’</button><button type="button" data-action="quick-kind" data-kind="hizb" class="${kind==='hizb'?'active':''}">Un demi-juz’</button></div>
+ <input type="hidden" id="q-kind" value="${kind}">
+ <div class="field quick-number"><label for="q-number" id="q-numlabel">${kind==='juz'?'Choisir le juz’':'Choisir le hizb'}</label><select id="q-number"><option value="" ${!num?'selected':''}>Choisir un ${kind==='juz'?'juz’':'hizb'}…</option>${Array.from({length:kind==='juz'?30:60},(_,i)=>{const n=i+1,span=reviewSpan(kind,n);return `<option value="${n}" ${n===num?'selected':''}>${esc(span.label)}</option>`}).join('')}</select></div>
+ <div class="quick-sub" id="quick-selected">${esc(reviewSpan(kind,num)?.label||'Aucun passage sélectionné')}</div>
+ <div class="quick-issue-heading"><strong>Des versets à corriger ?</strong><span class="small muted">Facultatif</span></div>
+ <div id="session-corrections">${groupedCorrections(corrections)}</div>
+ <button type="button" class="btn soft full quick-add" data-action="add-correction">＋ Ajouter une sourate à corriger</button>
+ <details class="optional-field"><summary>Ajouter une note</summary><div class="field"><textarea id="q-notes" placeholder="Facultatif…">${esc(old?.reviseNotes||'')}</textarea></div></details>
+ 
+ </form>`);
+ const form=document.querySelector('#quickreviewform');
+ form.addEventListener('submit',ev=>{
+  ev.preventDefault();const date=parseDisplayDate(form.querySelector('#q-date').value.trim());
+  if(!date||date>localToday()){toast('Date invalide : JJ/MM/AAAA');return}
+  const span=reviewSpan(form.querySelector('#q-kind').value,Number(form.querySelector('#q-number').value));if(!span){toast('Choisis un juz’ ou un hizb');return}
+  const newMistakes=collectCorrections(form);
+  if(!newMistakes)return;
+  newMistakes.forEach(m=>{if(!m.id)m.id=uid()});
+  const recId=old?.id||uid(),oldMistakes=new Map(db.mistakes.filter(m=>m.sessionId===recId).map(m=>[m.id,m]));
+  db.mistakes=db.mistakes.filter(m=>m.sessionId!==recId);
+  newMistakes.forEach(m=>{const previous=oldMistakes.get(m.id),same=previous&&previous.surah===m.surah&&previous.verse===m.verse&&previous.note===m.note;db.mistakes.push({...m,date,sessionId:recId,resolved:same?previous.resolved:false,resolvedAt:same?previous.resolvedAt||null:null,successDates:same?(previous.successDates||[]):[]})});
+  const notes=form.querySelector('#q-notes').value.trim();
+  const rec={id:recId,date,type:'revision',surah:span.start[0],learnSurah:null,learnFrom:'',learnTo:'',learnNotes:'',revisions:[],reviewBlocks:[span],reviseNotes:notes,notes,duration:old?.duration||null,vocabIds:old?.vocabIds||[],createdAt:old?.createdAt||new Date().toISOString()};
+  if(old)Object.assign(old,rec);else db.sessions.push(rec);
+  journalDate=date;save();closeModal();nav('sessions');toast('Révision enregistrée ✓');
+ });
+}
+
+function setQuickKind(kind){
+ const form=document.querySelector('#quickreviewform');if(!form||!['juz','hizb'].includes(kind))return;
+ form.querySelector('#q-kind').value=kind;form.querySelector('#q-numlabel').textContent=kind==='juz'?'Choisir le juz’':'Choisir le hizb';
+ const num=0;
+ form.querySelector('#q-number').innerHTML=`<option value="" selected>Choisir un ${kind==='juz'?'juz’':'hizb'}…</option>`+Array.from({length:kind==='juz'?30:60},(_,i)=>{const n=i+1;return `<option value="${n}" ${num===n?'selected':''}>${esc(reviewSpan(kind,n).label)}</option>`}).join('');
+ form.querySelectorAll('[data-action="quick-kind"]').forEach(b=>b.classList.toggle('active',b.dataset.kind===kind));
+ updateQuickLabel();
+}
+function updateQuickLabel(){const form=document.querySelector('#quickreviewform');if(!form)return;const span=reviewSpan(form.querySelector('#q-kind').value,form.querySelector('#q-number').value);form.querySelector('#quick-selected').textContent=span?span.label:'Aucun passage sélectionné'}
+
+// Session editor: separate memorisation, multiple revisions and shared Quran vocabulary.
+function sessionRevRow(r={}){const max=verseCount(r.surah);return `<div class="session-repeat" data-rev-row data-verse-row><div class="field"><label>Sourate</label><select data-rev-surah data-verse-surah>${journalSurahOptions(r.surah,'revise')}</select></div><div class="session-numbers"><div class="field"><label>Du verset</label><input data-rev-from data-verse-from inputmode="numeric" type="number" min="1" max="${max||1}" ${max?'':'disabled'} placeholder="1" value="${esc(r.from||'')}"></div><div class="field"><label>Au verset</label><input data-rev-to data-verse-to inputmode="numeric" type="number" min="1" max="${max||1}" ${max?'':'disabled'} placeholder="${max||'—'}" value="${esc(r.to||'')}"></div><button class="iconbtn remove-row" type="button" data-action="remove-rev" aria-label="Retirer la sourate">×</button></div><div class="verse-hint">${max?max+' versets':''}</div></div>`}
+// Chaque ligne représente une faute indépendante, même quand plusieurs lignes
+// concernent la même sourate. Les IDs existants restent inchangés lors de l'édition.
+function correctionVerseRow(c={}){
+ return `<div class="corr-item" data-correction-item data-mistake-id="${esc(c.id||'')}">
+  <div class="corr-item-head"><strong>${c.resolved?'✓ Corrigée':'Faute à corriger'}</strong><button type="button" class="corr-remove" data-action="remove-correction-verse" aria-label="Supprimer cette faute">✕</button></div>
+  <div class="corr-row">
+   <div class="field"><label>Verset</label><input data-corr-verse inputmode="numeric" placeholder="Ex. 1" aria-label="Numéro du verset" value="${esc(c.verse||'')}"></div>
+   <div class="field"><label>Ma faute</label><textarea data-corr-note rows="2" placeholder="Mot oublié, hésitation…" aria-label="Faute commise">${esc(c.note||'')}</textarea></div>
+  </div>
+ </div>`;
+}
+function correctionGroupRow(group={}){
+ const mistakes=Array.isArray(group.mistakes)?group.mistakes:[group];const surah=Number(group.surah)||null;
+ const num=verseCount(surah);
+ return `<section class="corr-group" data-correction-group>
+  <div class="corr-group-head"><div class="field"><label>Sourate</label><select data-corr-surah>${journalSurahOptions(surah,'revise')}</select></div><button class="corr-remove" type="button" data-action="remove-correction-group" aria-label="Retirer cette sourate">✕</button></div>
+  <div data-corr-items class="corr-items">${mistakes.map(correctionVerseRow).join('')}</div>
+  <div class="corr-error-hint" data-corr-hint>${num?'Versets 1 à '+num:''}</div>
+  <button class="btn soft corr-add-verse" type="button" data-action="add-correction-verse">＋ Ajouter un verset</button>
+ </section>`;
+}
+function groupedCorrections(corrections=[]){
+ const groups=[];
+ for(const m of corrections){let g=groups.find(g=>Number(g.surah)===Number(m.surah));if(!g){g={surah:m.surah,mistakes:[]};groups.push(g)}g.mistakes.push(m)}
+ return groups.map(correctionGroupRow).join('');
+}
+function collectCorrections(form){
+ const found=[];
+ for(const group of form.querySelectorAll('[data-correction-group]')){
+  const surah=Number(group.querySelector('[data-corr-surah]').value)||null;
+  for(const row of group.querySelectorAll('[data-correction-item]')){
+   const verse=row.querySelector('[data-corr-verse]').value.trim();
+   const note=row.querySelector('[data-corr-note]').value.trim();
+   if(!verse&&!note)continue;
+   if(!surah||!note||!validateVerseText(verse,surah)){
+    toast('Vérifie la sourate, le verset et la faute');
+    row.querySelector(!note?'[data-corr-note]':'[data-corr-verse]').focus();
+    return null;
+   }
+   found.push({id:row.dataset.mistakeId||null,surah,verse,note});
+  }
+ }
+ return found;
+}
+function renderSessionMistakes(mistakes){
+ const groups=[];
+ for(const m of mistakes){let group=groups.find(g=>g.surah===Number(m.surah));if(!group){group={surah:Number(m.surah),items:[]};groups.push(group)}group.items.push(m)}
+ return groups.map(g=>`<strong>${esc(ss(g.surah).name)}</strong> : `+g.items.map(m=>`${m.verse?'v. '+esc(m.verse)+' — ':''}${esc(m.note)}${m.resolved?' ✓':''}`).join(' · ')).join('<br>');
+}
+function sessionWordRow(w={}){return `<div class="session-repeat" data-word-row data-word-id="${esc(w.id||'')}"><div class="field"><label>Mot arabe</label><input class="arabic-input" lang="ar" dir="rtl" data-word-arabic placeholder="مثال: الْيَقِينِ" value="${esc(w.arabic||'')}"></div><div class="session-meaning"><div class="field"><label>Signification</label><input data-word-meaning placeholder="Certitude" value="${esc(w.meaning||'')}"></div><button class="iconbtn remove-row" type="button" data-action="remove-session-word" aria-label="Retirer ce mot">×</button></div></div>`}
+function sessionModal(id=null,surah=null){
+ let s=db.sessions.find(x=>x.id===id);
+ let learning=s?.learnSurah||(s?.type==='memorisation'?s.surah:null)||(s?.type==='mixte'?s.surah:null)||(!s?surah||db.currentSurah:null);
+ let learningVerses=String(s?.verses||'').match(/^(\d+)\s*[–—-]\s*(\d+)$/);
+ let from=s?.learnFrom||learningVerses?.[1]||(s?.type==='memorisation'?s?.verses:'')||(!s&&learning?'1':'');
+ let to=s?.learnTo||learningVerses?.[2]||(!s&&learning?String(verseCount(learning)):'');
+ let revs=Array.isArray(s?.revisions)?s.revisions:[];
+ if(s?.type==='revision'&&!revs.length&&!s.reviewBlocks?.length&&s.surah)revs=[{surah:s.surah,from:'',to:''}];
+ let words=(s?.vocabIds||[]).map(id=>db.vocab.find(w=>w.id===id)).filter(Boolean);
+ let oldNotes=s?.notes||'';
+ let oldAttention=s?.attention||s?.errorNote||'';
+ let corrections=s?db.mistakes.filter(m=>m.sessionId===s.id):[];
+ if(s&&!corrections.length&&oldAttention){corrections=[{surah:s.attentionSurah||s.learnSurah||s.surah,verse:s.errorVerse||'',note:oldAttention}]}
+ let learnNotes=s?.learnNotes||(s?.source==='Mon Espace Dîn'?'':(s?.type==='memorisation'?oldNotes:''));
+ let reviseNotes=s?.reviseNotes||((s?.type==='revision'&&!s.source)?oldNotes:'');
+ modal(s?'Modifier ma séance':'Ma séance',`<form id="sessionform">
+ <div class="field session-date-field"><label for="s-date">${ico('calendar')} Date</label><input id="s-date" type="text" required inputmode="numeric" maxlength="10" autocomplete="off" placeholder="JJ/MM/AAAA" aria-label="Date au format jour mois année" value="${esc(showDate(s?.date||(view==='sessions'?journalDate:today)))}"></div>
+ <div class="session-section"><div class="session-section-title">${ico('book')} J’ai appris</div><div data-verse-row id="learning-range">
+ <div class="field"><label for="s-learn-surah">Sourate</label><select id="s-learn-surah" data-verse-surah>${journalSurahOptions(learning,'learn')}</select></div>
+ <div class="fieldline"><div class="field"><label for="s-learn-from">Du verset</label><input id="s-learn-from" data-verse-from inputmode="numeric" type="number" min="1" max="${verseCount(learning)||1}" ${learning?'':'disabled'} placeholder="1" value="${esc(from)}"></div><div class="field"><label for="s-learn-to">Au verset</label><input id="s-learn-to" data-verse-to inputmode="numeric" type="number" min="1" max="${verseCount(learning)||1}" ${learning?'':'disabled'} placeholder="${verseCount(learning)||'—'}" value="${esc(to)}"></div></div><div class="verse-hint">${learning?verseCount(learning)+' versets':''}</div></div>
+ <details class="optional-field" ${learnNotes?'open':''}><summary>＋ Notes d’apprentissage</summary><div class="field"><textarea aria-label="Notes d’apprentissage" id="s-learn-notes" placeholder="Ce que j’ai retenu…">${esc(learnNotes)}</textarea></div></details></div>
+ <div class="session-section"><div class="session-section-title">${ico('refresh')} J’ai révisé</div>
+ <div id="session-revisions">${revs.map(sessionRevRow).join('')}</div>
+ <button type="button" class="btn ghost full smallbtn" data-action="add-rev">＋ Ajouter une sourate</button>
+ <details class="optional-field" ${reviseNotes?'open':''}><summary>＋ Notes de révision</summary><div class="field"><textarea aria-label="Notes de révision" id="s-revise-notes" placeholder="Bilan de mes révisions…">${esc(reviseNotes)}</textarea></div></details></div>
+ <div class="session-section"><div class="session-section-title">${ico('target')} Points à corriger</div>
+ <div id="session-corrections">${groupedCorrections(corrections)}</div>
+ <button type="button" class="btn ghost full smallbtn" data-action="add-correction">＋ Ajouter une sourate</button></div>
+ <div class="session-section"><div class="session-section-title">${ico('book')} Vocabulaire du jour</div>
+ <div id="session-words">${words.map(sessionWordRow).join('')}</div>
+ <button type="button" class="btn ghost full smallbtn" data-action="add-session-word">＋ Ajouter un mot</button>
+ </div>
+ <details class="optional-field duration-field" ${s?.duration?'open':''}><summary>＋ Durée</summary><div class="field"><label for="s-duration">Minutes</label><input id="s-duration" inputmode="numeric" type="number" min="1" max="600" placeholder="20" value="${esc(s?.duration||'')}"></div></details>
+ <div class="modal-actions"><button type="button" class="btn ghost" data-action="close-modal">Annuler</button><button class="btn" type="submit">Enregistrer</button></div></form>`);
+ let form=document.querySelector('#sessionform');
+ refreshVerseBounds();
+ form.addEventListener('submit',ev=>{
+  ev.preventDefault();
+  let date=parseDisplayDate(form.querySelector('#s-date').value.trim());
+  let learnSurah=Number(form.querySelector('#s-learn-surah').value)||null;
+  let learnFrom=form.querySelector('#s-learn-from').value.trim();let learnTo=form.querySelector('#s-learn-to').value.trim();
+  let learnNotes=form.querySelector('#s-learn-notes').value.trim();
+  let revisions=[...form.querySelectorAll('[data-rev-row]')].map(r=>({surah:Number(r.querySelector('[data-rev-surah]').value)||null,from:r.querySelector('[data-rev-from]').value.trim(),to:r.querySelector('[data-rev-to]').value.trim()})).filter(r=>r.surah);
+  let reviseNotes=form.querySelector('#s-revise-notes').value.trim();
+  let duration=Number(form.querySelector('#s-duration').value)||null;
+  const corrections=collectCorrections(form);
+  if(!corrections)return;
+  if(!date||date>today){toast('Date invalide : JJ/MM/AAAA');return}
+  if(!learnSurah&&!revisions.length&&!corrections.length){toast('Indique une sourate travaillée ou une correction');return}
+  const validRange=(surah,from,to)=>!surah||(!from&&!to)||(from&&to&&Number(from)>=1&&Number(to)>=Number(from)&&Number(to)<=verseCount(surah));
+  if(!validRange(learnSurah,learnFrom,learnTo)||revisions.some(r=>!validRange(r.surah,r.from,r.to))){toast('Vérifie les limites des versets');return}
+  let vocabEntries=[];
+  for(let row of form.querySelectorAll('[data-word-row]')){
+   let arabic=row.querySelector('[data-word-arabic]').value.trim();let meaning=row.querySelector('[data-word-meaning]').value.trim();
+   if(!arabic&&!meaning)continue;
+   if(!arabic||!meaning){toast('Chaque mot doit avoir sa signification');return}
+   if(!/[\u0621-\u064A]/.test(arabic)){toast('Le mot doit être écrit en arabe');return}
+   vocabEntries.push({id:row.dataset.wordId||null,arabic,meaning});
+  }
+  let recId=s?.id||uid();let wordIds=[];
+  vocabEntries.forEach(w=>{
+   let existing=(w.id&&db.vocab.find(x=>x.id===w.id))||db.vocab.find(x=>normAr(x.arabic)===normAr(w.arabic)&&x.meaning.toLowerCase()===w.meaning.toLowerCase());
+   if(existing){if(w.id===existing.id){existing.arabic=w.arabic;existing.meaning=w.meaning}wordIds.push(existing.id)}
+   else {let item={id:uid(),arabic:w.arabic,meaning:w.meaning,surah:learnSurah||revisions[0]?.surah||null,verse:'',note:'',known:false,sessionId:recId};db.vocab.push(item);wordIds.push(item.id)}
+  });
+  let type=learnSurah&&revisions.length?'mixte':learnSurah?'memorisation':revisions.length?'revision':'correction';
+  let notes=[learnNotes?'Apprentissage : '+learnNotes:'',reviseNotes?'Révision : '+reviseNotes:''].filter(Boolean).join('\n\n');
+  let rec={id:recId,date,surah:learnSurah||revisions[0]?.surah||corrections[0].surah,type,
+   learnSurah,learnFrom,learnTo,learnNotes,revisions,reviseNotes,attention:'',attentionSurah:null,
+   verses:learnSurah?(learnFrom+'–'+learnTo):'',notes,duration,
+   errorVerse:'',errorNote:'',vocabIds:wordIds,createdAt:s?.createdAt||new Date().toISOString()};
+  if(s)Object.assign(s,rec);else db.sessions.push(rec);
+  const prev=new Map(db.mistakes.filter(m=>m.sessionId===recId).map(m=>[m.id,m]));
+  db.mistakes=db.mistakes.filter(m=>m.sessionId!==recId);
+  for(const c of corrections){
+   const original=prev.get(c.id);
+   const unchanged=original&&original.surah===c.surah&&original.verse===c.verse&&original.note===c.note;
+   db.mistakes.push({id:c.id||uid(),sessionId:recId,date,surah:c.surah,verse:c.verse,note:c.note,resolved:unchanged?original.resolved:false,resolvedAt:unchanged?original.resolvedAt||null:null,successDates:unchanged?(original.successDates||[]):[]});
+  }
+  journalDate=date;save();closeModal();nav('sessions');toast('Séance enregistrée ✓');
+ });
+}
+function goalModal(){modal('Nouvel objectif',`<form id="goalform"><p class="small muted">Pour le ${showDate(goalDate)}. Tu pourras le cocher sur l’accueil.</p><div class="field"><label for="g-text">Mon objectif *</label><input id="g-text" maxlength="200" required placeholder="Ex. : Corriger les versets 1 et 2 de ‘Abasa"></div><div class="modal-actions"><button type="button" class="btn ghost" data-action="close-modal">Annuler</button><button class="btn" type="submit">Ajouter</button></div></form>`);document.querySelector('#goalform').addEventListener('submit',ev=>{ev.preventDefault();let v=document.querySelector('#g-text').value.trim();if(!v)return;db.goals.push({id:uid(),date:goalDate,text:v,done:false});save();closeModal();render();toast('Objectif ajouté')})}
+function mistakeModal(surah){
+ const surahName=ss(surah).name;
+ modal('Noter mes erreurs',`<form id="mistakeform">
+ <p class="small muted" style="margin:0 0 10px">${esc(surahName)}</p>
+ <div class="field"><label for="m-date">Date</label><input type="date" max="${today}" value="${today}" required id="m-date"></div>
+ <div class="corr-items" id="standalone-corrections">${correctionVerseRow()}</div>
+ <button class="btn soft full" style="margin-top:10px" type="button" data-action="add-standalone-verse">＋ Ajouter un autre verset</button>
+ <div class="modal-actions"><button class="btn ghost" type="button" data-action="close-modal">Annuler</button><button class="btn" type="submit">Enregistrer</button></div>
+ </form>`);
+ document.querySelector('#mistakeform').addEventListener('submit',ev=>{
+  ev.preventDefault();const date=document.querySelector('#m-date').value;
+  const corrections=[];
+  for(const row of document.querySelectorAll('#standalone-corrections [data-correction-item]')){
+   const verse=row.querySelector('[data-corr-verse]').value.trim(),note=row.querySelector('[data-corr-note]').value.trim();
+   if(!verse&&!note)continue;
+   if(!note||!validateVerseText(verse,surah)){toast('Vérifie les versets et les fautes');return}
+   corrections.push({id:uid(),date,surah:Number(surah),verse,note,resolved:false});
+  }
+  if(!corrections.length){toast('Ajoute au moins une faute');return}
+  db.mistakes.push(...corrections);save();closeModal();render();toast(corrections.length+' faute(s) ajoutée(s)');
+ });
+}
+function currentModal(){modal('Sourate en cours',`<form id="currentform"><div class="field"><label for="current">Quelle sourate apprends-tu maintenant ?</label><select id="current" required>${surahOptions(db.currentSurah)}</select></div><div class="modal-actions"><button class="btn ghost" type="button" data-action="close-modal">Annuler</button><button class="btn" type="submit">Enregistrer</button></div></form>`);document.querySelector('#currentform').addEventListener('submit',ev=>{ev.preventDefault();let id=Number(document.querySelector('#current').value);if(!id)return;db.currentSurah=id;if(sStatus(id)==='none')updateStatus(id,'learning');save();closeModal();render();toast('Sourate en cours mise à jour')})}
+function updateStatus(id,status){db.statuses[id]=status;db.statusHistory.push({id:uid(),date:today,surah:Number(id),status});save()}
+function settingsModal(){
+ closeMenu();
+ const weeks=[];let d=new Date(today+'T12:00:00');
+ for(let i=7;i>=0;i--){let first=new Date(d);first.setDate(first.getDate()-((first.getDay()+6)%7)-7*i);let last=new Date(first);last.setDate(last.getDate()+7);
+  let n=db.sessions.filter(s=>{let dt=new Date(s.date+'T12:00:00');return dt>=first&&dt<last}).length;
+  weeks.push({date:`${String(first.getDate()).padStart(2,'0')}/${String(first.getMonth()+1).padStart(2,'0')}`,count:n})}
+ const mx=Math.max(1,...weeks.map(x=>x.count));
+ const history=(db.statusHistory||[]).slice(-8).reverse();
+ const mastered=SURAH.filter(s=>sStatus(s.id)==='mastered').length;
+ const fragile=SURAH.filter(s=>['correct','strengthen'].includes(sStatus(s.id))).length;
+ const backupAge=db.lastBackupAt?Math.round((Date.now()-new Date(db.lastBackupAt).getTime())/86400000):null;
+ const backupText=db.lastBackupAt?'Dernière sauvegarde : '+new Date(db.lastBackupAt).toLocaleDateString('fr-FR'):db.sessions.length?'Aucune sauvegarde exportée depuis cette application.':'Aucune sauvegarde effectuée.';
+ const backupReminder=db.sessions.length>=5&&(backupAge===null||backupAge>14);
+ modal('Paramètres',`<div class="settings-section"><h3>Ma progression</h3><div class="card"><strong class="settings-stat">${knownPercent().toFixed(1).replace('.',',')} %</strong><div class="small muted">${knownSurahs().length} sourates déjà apprises sur 114</div><div class="progress"><div class="fill" style="width:${knownPercent().toFixed(3)}%"></div></div><div class="tinyhint">Pourcentage des sourates déjà apprises sur 114. Les sourates à renforcer ou à corriger restent comptées comme apprises.</div></div></div><div class="settings-section"><h3>Ma régularité</h3><div class="card"><div class="chart">${weeks.map(w=>`<div class="barcol" title="${w.count} séance(s)"><div class="small" style="font-size:10px">${w.count||''}</div><div class="bar" style="height:${Math.max(3,w.count/mx*77)}px"></div><small>${w.date}</small></div>`).join('')}</div></div></div>
+ <div class="settings-section"><h3>Évolution des sourates</h3><div class="card"><div class="row between"><div><strong class="settings-stat">${mastered}</strong><span class="small muted"> maîtrisées</span></div><div><strong class="settings-stat">${fragile}</strong><span class="small muted"> à revoir</span></div></div><div class="tinyhint">✓ ${db.mistakes.filter(m=>m.resolved).length} erreur(s) corrigée(s) depuis le début</div>
+ ${history.length?`<hr class="divider">${history.map(item=>`<div class="row between status-history"><div><strong class="small">${esc(ss(item.surah).name)}</strong><div>${statusPill(item.status)}</div></div><span class="small muted">${showDate(item.date)}</span></div>`).join('')}`:'<p class="tinyhint">Les changements de statut apparaîtront ici.</p>'}</div></div>
+ <div class="settings-section"><h3>Mes sourates</h3><button type="button" class="btn ghost full" data-action="setup-acquis">＋ Renseigner plusieurs sourates apprises</button></div>
+ <div class="settings-section"><h3>Mes données</h3><div class="card"><div class="backup-indicator">${backupReminder?'⚠ ' :''}${esc(backupText)}<div class="tinyhint">Les données restent sur cet appareil. Exporte régulièrement ton fichier pour les protéger.</div></div><button class="btn full" data-action="export">↓ Exporter une sauvegarde</button><label class="btn ghost full filebtn" style="margin-top:10px">↑ Importer une sauvegarde<input id="importfile" type="file" accept=".json,application/json"></label></div></div>
+ <button class="linkbtn" style="color:var(--red)" data-action="clear-all">Effacer mon carnet</button>`);
+}
+function exportData(){db.lastBackupAt=new Date().toISOString();save();let blob=new Blob([JSON.stringify({version:6,exportedAt:new Date().toISOString(),...db},null,2)],{type:'application/json'}),a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download=`mon-carnet-coran-${today}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);toast('Sauvegarde téléchargée')}
+function importData(file){
+ if(!file)return;
+ let r=new FileReader();r.onload=()=>{
+  try{
+    let v=JSON.parse(r.result);
+    if(v.quranJournal&&v.surahs){
+      if(!confirm('Importer les données Coran de Mon Espace Dîn sans supprimer ton carnet actuel ?'))return;
+      let d=convertDin(v), ids=new Set(db.sessions.map(x=>x.id)),mid=new Set(db.mistakes.map(x=>x.id)),wid=new Set(db.vocab.map(x=>x.id));
+      d.sessions.forEach(x=>{if(!ids.has(x.id))db.sessions.push(x)});
+      d.mistakes.forEach(x=>{if(!mid.has(x.id))db.mistakes.push(x)});
+      d.vocab.forEach(x=>{if(!wid.has(x.id))db.vocab.push(x)});
+      Object.entries(d.statuses).forEach(([k,x])=>{if(!db.statuses[k])db.statuses[k]=x});
+      if(!db.currentSurah)db.currentSurah=d.currentSurah;
+      db.dinSeeded=true;db.onboarded=true;save();closeModal();nav('home');toast('Données Coran fusionnées ✓');return;
+    }
+    if(!Array.isArray(v.sessions)||!Array.isArray(v.goals)||!Array.isArray(v.mistakes)||typeof v.statuses!=='object')throw Error('Format invalide');
+    if(!confirm('Remplacer toutes tes données actuelles par celles de ce fichier ?'))return;
+    db={sessions:v.sessions,goals:v.goals,mistakes:v.mistakes,statuses:v.statuses||{},statusHistory:v.statusHistory||[],currentSurah:v.currentSurah||null,vocab:v.vocab||[],guided:v.guided||null,dinSeeded:true,onboarded:true,lastBackupAt:v.lastBackupAt||null};
+    save();closeModal();nav('home');toast('Sauvegarde restaurée ✓');
+  }catch(e){console.error(e);toast('Fichier JSON non reconnu')}
+ };r.readAsText(file);
+}
+
+// Parcours guidé : l'utilisateur contrôle la récitation avec son mushaf ou Quran.com.
+function validGuided(g){return g && Number.isInteger(Number(g.surah)) && verseCount(g.surah)>0 && ['prep','verse','link','test','done'].includes(g.stage) && Number.isInteger(Number(g.from)) && Number.isInteger(Number(g.to)) && Number(g.from)>=1 && Number(g.to)>=Number(g.from) && Number(g.to)<=verseCount(g.surah) && Number(g.verse)>=Number(g.from) && Number(g.verse)<=Number(g.to)}
+function suggestedRange(id){const m=verseCount(id);const end=Math.max(0,...db.sessions.filter(s=>Number(s.learnSurah)===Number(id)).map(s=>Math.min(m,Math.max(0,Number(s.learnTo)||0))));const from=end<m?end+1:1;return {from,to:Math.min(m,from+4)}}
+function newGuided(id){const range=suggestedRange(id);return {surah:Number(id),...range,verse:range.from,stage:'prep',read:false,listen:false,count:0,note:'',started:localToday()}}
+function setGuided(g){db.guided=g;save();render()}
+function guidedDefault(){return db.guided&&validGuided(db.guided)?db.guided:null}
+function guidedLink(id,from){return `https://quran.com/fr/${Number(id)}${from?'?startingVerse='+Number(from):''}`}
+function learnPage(){
+ const g=guidedDefault();const current=g?.surah||((db.currentSurah&&journalSurahAllowed(db.currentSurah,'learn'))?db.currentSurah:null);const stage=g?.stage||'prep';const step=stage==='prep'?0:stage==='verse'||stage==='link'?1:stage==='test'?2:3;
+ const progress=`<div class="learn-progress" aria-label="Étape ${step+1} sur 4">${[0,1,2,3].map(i=>`<i class="${i<=step?'on':''}"></i>`).join('')}</div>`;
+ if(stage==='prep'){
+ const r=g|| (current?newGuided(current):null);
+ return `${progress}<section class="card learn-card"><div class="learn-step">1 / 4 · Découvrir</div><div class="field"><label for="guided-surah">Sourate</label><select id="guided-surah">${journalSurahOptions(current,'learn')}</select></div>${current?`<a class="learn-link" href="${guidedLink(current)}" target="_blank" rel="noopener noreferrer">${ico('book')} Lire et écouter sur Quran.com <span>↗</span></a><label class="learn-check"><input class="tick" type="checkbox" id="guided-read" ${r.read?'checked':''}> Lire la sourate</label><label class="learn-check"><input class="tick" type="checkbox" id="guided-listen" ${r.listen?'checked':''}> Écouter la sourate</label><h3 style="margin-top:18px">Mon petit objectif</h3><div class="fieldline"><div class="field"><label for="guided-from">Du verset</label><input type="number" inputmode="numeric" id="guided-from" min="1" max="${verseCount(current)}" value="${r.from}"></div><div class="field"><label for="guided-to">Au verset</label><input type="number" inputmode="numeric" id="guided-to" min="1" max="${verseCount(current)}" value="${r.to}"></div></div><button class="btn full" data-action="guided-start">Commencer la mémorisation ›</button>`:'<p class="learn-note">Choisis une sourate pour commencer.</p>'}</section>`}
+ const label=`${esc(ss(g.surah).name)} · v. ${g.from}–${g.to}`;
+ if(stage==='done')return `${progress}<section class="card learn-card"><div class="learn-step">4 / 4 · Bilan</div><h2 class="learn-title">Passage récité !</h2><p>${label}</p><p class="learn-note">Enregistre ton travail puis retrouve les rappels dans tes objectifs à J+1, J+3 et J+7.</p><div class="field"><label for="guided-note">Notes (facultatif)</label><textarea id="guided-note" placeholder="Ce que je veux retenir…">${esc(g.note||'')}</textarea></div>${g.to===verseCount(g.surah)?`<label class="learn-check"><input class="tick" id="guided-surah-complete" type="checkbox"> J’ai terminé de mémoriser toute cette sourate</label><p class="tinyhint">Elle sera classée « À renforcer » et comptera parmi les sourates apprises.</p>`:''}<button class="btn full" data-action="guided-finish">✓ Enregistrer ma séance</button></section><button class="linkbtn" data-action="guided-restart">Recommencer le passage</button>`;
+ const target=stage==='verse'?5:stage==='link'?3:1;const passage=stage==='verse'?`Verset ${g.verse}`:stage==='link'?`Versets ${g.from} à ${g.verse}`:`Versets ${g.from} à ${g.to}`;
+ const instruction=stage==='verse'?'Lis et écoute le verset, puis récite-le sans regarder. Vérifie dans ton mushaf après chaque essai.':stage==='link'?'Enchaîne tous les versets depuis le début du passage, sans regarder.':'Récite tout le passage sans regarder, puis vérifie. Si tu bloques, reprends la mémorisation.';
+ return `${progress}<section class="card learn-card"><div class="learn-step">${step+1} / 4 · ${stage==='verse'?'Mémoriser':stage==='link'?'Enchaîner':'Se tester'}</div><p class="small muted">${label}</p><h2 class="learn-title">${passage}</h2><p class="learn-note">${instruction}</p><a class="learn-link" href="${guidedLink(g.surah,stage==='verse'?g.verse:g.from)}" target="_blank" rel="noopener noreferrer">Ouvrir le passage ↗</a><div class="counter" aria-label="${g.count||0} sur ${target} récitations réussies">${Array.from({length:target},(_,i)=>`<i class="${i<(g.count||0)?'on':''}">${i<(g.count||0)?'✓':''}</i>`).join('')}</div><div style="text-align:center;font-weight:700;color:var(--accent-dark)">${g.count||0} / ${target} réussies</div><div class="learn-actions"><button class="btn ghost" data-action="guided-error">↺ Je me trompe</button><button class="btn" data-action="guided-correct">✓ Réussi</button></div></section><button class="linkbtn" data-action="guided-restart">Changer le passage</button>`;
+}
+function prepChange(){let id=Number(document.querySelector('#guided-surah')?.value);if(!id)return;let g=guidedDefault()||newGuided(id);if(g.surah!==id)g=newGuided(id);const from=Number(document.querySelector('#guided-from')?.value),to=Number(document.querySelector('#guided-to')?.value);if(Number.isInteger(from)&&Number.isInteger(to)&&from>=1&&to>=from&&to<=verseCount(id)){g.from=from;g.to=to;g.verse=from;}g.read=!!document.querySelector('#guided-read')?.checked;g.listen=!!document.querySelector('#guided-listen')?.checked;db.guided=g;save()}
+function guideAction(a,id){
+ let g=guidedDefault();
+ if(a==='guided-from-surah'){if(g&&Number(id)===g.surah){nav('learn');return}if(g&&!confirm('Remplacer le parcours en cours ?'))return;db.guided=newGuided(Number(id));save();nav('learn');return}
+ if(a==='guided-start'){const sel=Number(document.querySelector('#guided-surah')?.value);const from=Number(document.querySelector('#guided-from')?.value),to=Number(document.querySelector('#guided-to')?.value);if(!sel||!Number.isInteger(from)||!Number.isInteger(to)||from<1||from>to||to>verseCount(sel)){toast('Vérifie les versets de ton objectif');return}if(!document.querySelector('#guided-read').checked||!document.querySelector('#guided-listen').checked){toast('Lis et écoute la sourate avant de commencer');return}db.currentSurah=sel;if(sStatus(sel)==='none')updateStatus(sel,'learning');setGuided({...newGuided(sel),from,to,verse:from,read:true,listen:true,stage:'verse'});return}
+ if(!g)return;
+ if(a==='guided-restart'){if(confirm('Revenir au choix du passage ? Les répétitions en cours seront remises à zéro.'))setGuided({...g,stage:'prep',count:0,verse:g.from});return}
+ if(a==='guided-error'){g.count=0;if(g.stage==='test'){g.stage='verse';g.verse=g.from}setGuided(g);return}
+ if(a==='guided-correct'){
+  if(!['verse','link','test'].includes(g.stage))return;
+  g.count=(Number(g.count)||0)+1;
+  if(g.stage==='verse'&&g.count>=5){g.count=0;if(g.verse>g.from)g.stage='link';else if(g.verse<g.to)g.verse++;else g.stage='test';}
+  else if(g.stage==='link'&&g.count>=3){g.count=0;if(g.verse<g.to){g.verse++;g.stage='verse'}else g.stage='test';}
+  else if(g.stage==='test'){g.stage='done';g.count=0}
+  setGuided(g);return;
+ }
+ if(a==='guided-finish'&&g.stage==='done'){
+  const date=localToday(), recId=uid(),note=document.querySelector('#guided-note')?.value.trim()||g.note||'';
+  const notes='Parcours guidé : lecture, écoute, mémorisation et test de mémoire. '+note;
+  db.sessions.push({id:recId,date,surah:g.surah,type:'memorisation',learnSurah:g.surah,learnFrom:String(g.from),learnTo:String(g.to),learnNotes:notes,revisions:[],reviseNotes:'',attention:'',verses:g.from+'–'+g.to,notes,duration:null,vocabIds:[],createdAt:new Date().toISOString()});
+  const text=`Revoir ${ss(g.surah).name} · v. ${g.from}–${g.to}`;
+  for(const offset of [1,3,7]){const d=dayShift(date,offset);if(!db.goals.some(x=>x.date===d&&x.text===text))db.goals.push({id:uid(),date:d,text,done:false});}
+  if(document.querySelector('#guided-surah-complete')?.checked&&g.to===verseCount(g.surah)&&['learning','none'].includes(sStatus(g.surah))){updateStatus(g.surah,'strengthen')}
+  db.guided=null;save();journalDate=date;nav('sessions');toast('Séance et rappels enregistrés ✓');return;
+ }
+}
+document.addEventListener('change',e=>{if(e.target.id==='guided-surah'){const id=Number(e.target.value);if(id)setGuided(newGuided(id));else{db.guided=null;save();render()}return}if(['guided-read','guided-listen','guided-from','guided-to'].includes(e.target.id))prepChange();});
+document.addEventListener('input',e=>{if(e.target.id==='guided-note'&&db.guided){db.guided.note=e.target.value;save();}});
+
+document.addEventListener('change',ev=>{let el=ev.target;
+if(el.matches('[data-verse-surah]')){const row=el.closest('[data-verse-row]');setVerseBounds(row,true);const hint=row.querySelector('.verse-hint');if(hint)hint.textContent=verseCount(el.value)?verseCount(el.value)+' versets':'';return}
+if(el.matches('[data-corr-surah]')){const hint=el.closest('[data-correction-group]')?.querySelector('[data-corr-hint]');if(hint)hint.textContent=verseCount(el.value)?'Versets 1 à '+verseCount(el.value):'';return}
+if(el.matches('[data-verse-from],[data-verse-to]')){const row=el.closest('[data-verse-row]');const max=verseCount(row.querySelector('[data-verse-surah]').value);if(el.value&&max){el.value=String(Math.min(max,Math.max(1,Number(el.value)||1)))}return}
+if(el.id==='q-number'){updateQuickLabel();return}if(el.id==='journal-date'){journalDate=el.value&&el.value<=today?el.value:today;render()}else if(el.id==='goals-date'){goalDate=el.value||today;render()}else if(el.id==='surah-filter'){surahFilter=el.value;render()}else if(el.dataset.goal){let g=db.goals.find(x=>x.id===el.dataset.goal);if(g){g.done=el.checked;save();render()}}else if(el.id==='importfile')importData(el.files?.[0])});
+document.addEventListener('input',ev=>{if(ev.target.id==='s-date'||ev.target.id==='q-date'){
+ const i=ev.target;const digits=i.value.replace(/\D/g,'').slice(0,8);i.value=digits.slice(0,2)+(digits.length>2?'/'+digits.slice(2,4):'')+(digits.length>4?'/'+digits.slice(4):'');return;
+}if(ev.target.id==='surah-search'){surahSearch=ev.target.value;let start=ev.target.selectionStart;render();let el=document.querySelector('#surah-search');el.focus();el.setSelectionRange(start,start)}else if(ev.target.id==='session-search'){sessionFilter=ev.target.value;let start=ev.target.selectionStart;render();let el=document.querySelector('#session-search');el.focus();el.setSelectionRange(start,start)}else if(ev.target.id==='vocab-search'){vocabSearch=ev.target.value;let start=ev.target.selectionStart;render();let el=document.querySelector('#vocab-search');el.focus();el.setSelectionRange(start,start)}});
+document.addEventListener('click',ev=>{let btn=ev.target.closest('[data-action],[data-nav]');if(!btn){if(ev.target.id==='modalwrap')closeModal();return}if(btn.dataset.nav){if(document.querySelector('#modalwrap').classList.contains('session-screen')){if(!confirm('Quitter cette séance sans enregistrer ?'))return;closeModal()}nav(btn.dataset.nav);return}let a=btn.dataset.action,id=btn.dataset.id;if(a==='go-home'){scrollMemory.home=0;nav('home');return}if(a?.startsWith('guided-')){guideAction(a,id);return}if(a==='quick-review'){closeMenu();quickReviewModal();return}if(a==='setup-acquis'){closeMenu();showWelcome();return}if(a==='setup-skip'){db.onboarded=true;save();closeModal();return}if(a==='quick-last'){const recent=db.sessions.filter(s=>s.reviewBlocks?.length).sort((x,y)=>String(y.createdAt||y.date).localeCompare(String(x.createdAt||x.date)))[0]?.reviewBlocks?.[0];if(recent){setQuickKind(recent.kind);const el=document.querySelector('#q-number');el.value=String(recent.number);updateQuickLabel();}return}if(a==='surahs-review'||a==='surahs-known'){surahFilter=a==='surahs-review'?'review':'known';nav('surahs');return}if(a==='quick-kind'){setQuickKind(btn.dataset.kind);return}if(a==='open-surah-from-home'){nav('surahs');rememberScroll();selectedSurah=Number(id);render();window.scrollTo({top:0,behavior:'instant'});return}if(a==='nav-session'){closeMenu();if(!document.querySelector('#modalwrap').classList.contains('session-screen')){journalDate=today;sessionModal();}return}if(a==='show-search'){showSurahSearch=!showSurahSearch;if(!showSurahSearch)surahSearch='';render();document.querySelector('#surah-search')?.focus();return}if(a==='filter-surah'){surahFilter=id;render();return}if(a==='home-known'||a==='home-review'){surahFilter=a==='home-known'?'known':'review';nav('surahs');return}if(a==='goals-today'){goalDate=today;render();return}if(a==='home-goal-date'){modal('Date des objectifs',`<form id="goals-date-form"><div class="field"><label for="pick-goal-date">Date</label><input type="date" id="pick-goal-date" required value="${goalDate}"></div></form>`);document.querySelector('#goals-date-form').onsubmit=e=>{e.preventDefault();goalDate=document.querySelector('#pick-goal-date').value;closeModal();render()};return}if(a==='close-modal'){closeModal();return}if(a==='submit-modal'){const form=document.querySelector('#modalbody form');if(form)form.requestSubmit();return}if(a==='settings'){closeMenu();settingsModal();return}if(a==='open-menu'){openMenu();return}if(a==='close-menu'){closeMenu();return}if(a==='add-rev'){document.querySelector('#session-revisions').insertAdjacentHTML('beforeend',sessionRevRow());return}
+if(a==='add-correction'){
+ const candidates=[...document.querySelectorAll('[data-rev-surah]')].map(el=>Number(el.value)).concat(Number(document.querySelector('#s-learn-surah')?.value));
+ const surah=candidates.find(id=>id&&journalSurahAllowed(id,'revise'))||null;
+  document.querySelector('#session-corrections').insertAdjacentHTML('beforeend',correctionGroupRow({surah}));return;
+ }
+ if(a==='add-correction-verse'){
+  const group=btn.closest('[data-correction-group]');
+  group.querySelector('[data-corr-items]').insertAdjacentHTML('beforeend',correctionVerseRow());
+  group.querySelector('[data-correction-item]:last-child [data-corr-verse]')?.focus();return;
+ }
+ if(a==='remove-correction-verse'){const group=btn.closest('[data-correction-group]');btn.closest('[data-correction-item]')?.remove();if(group&&!group.querySelector('[data-correction-item]'))group.remove();return}
+ if(a==='remove-correction-group'){btn.closest('[data-correction-group]')?.remove();return}
+ if(a==='add-standalone-verse'){document.querySelector('#standalone-corrections')?.insertAdjacentHTML('beforeend',correctionVerseRow());return}
+if(a==='remove-rev'){btn.closest('[data-rev-row]')?.remove();return}
+if(a==='add-session-word'){document.querySelector('#session-words').insertAdjacentHTML('beforeend',sessionWordRow());return}
+if(a==='remove-session-word'){btn.closest('[data-word-row]')?.remove();return}
+if(a==='journal-prev'){journalDate=dayShift(journalDate,-1);render();return}
+if(a==='journal-next'){if(journalDate<today)journalDate=dayShift(journalDate,1);render();return}
+if(a==='journal-today'){journalDate=today;render();return}
+if(a==='toggle-known-surahs'){surahFilter=surahFilter==='known'?'all':'known';render();return}if(a==='new-word'){wordModal(null);return}if(a==='edit-word'){wordModal(id);return}if(a==='vocab-filter'){vocabFilter=id;render();return}if(a==='toggle-word'){let w=db.vocab.find(x=>x.id===id);if(w){w.known=!w.known;save();render();toast(w.known?'Mot marqué comme connu':'Mot remis à réviser')}return}if(a==='delete-word'){if(confirm('Supprimer ce mot du lexique ?')){db.vocab=db.vocab.filter(x=>x.id!==id);save();render()}return}if(a==='change-current'){currentModal();return}if(a==='add-goal'){goalModal();return}if(a==='new-session'){sessionModal(null,id?Number(id):null);return}if(a==='edit-session'){const target=db.sessions.find(x=>x.id===id);if(target?.reviewBlocks?.length)quickReviewModal(id);else sessionModal(id);return}if(a==='new-mistake'){mistakeModal(id);return}if(a==='set-current'){db.currentSurah=Number(id);if(sStatus(id)==='none')updateStatus(id,'learning');save();render();toast('Sourate en cours définie');return}if(a==='set-status'){updateStatus(id,btn.dataset.status);render();toast('Statut mis à jour');return}if(a==='open-surah'){rememberScroll();selectedSurah=Number(id);render();window.scrollTo({top:0,behavior:'instant'});return}if(a==='back-surah'){rememberScroll();selectedSurah=null;render();restoreScroll('surahs');return}if(a==='choose-tip'){tipSelected=id;render();return}if(a==='export'){exportData();return}if(a==='delete-goal'){if(confirm('Supprimer cet objectif ?')){db.goals=db.goals.filter(x=>x.id!==id);save();render()}return}if(a==='delete-session'){if(confirm('Supprimer cette séance et les erreurs qui y sont liées ?')){db.sessions=db.sessions.filter(x=>x.id!==id);db.mistakes=db.mistakes.filter(x=>x.sessionId!==id);save();render();toast('Séance supprimée')}return}if(a==='check-mistake'){const m=db.mistakes.find(x=>x.id===id);if(m){m.successDates=m.successDates||[];if(!m.successDates.includes(today)){m.successDates.push(today);save();render();toast('Récitation réussie aujourd’hui ✓')}}return}if(a==='delete-mistake'){if(confirm('Supprimer cette erreur du carnet ?')){db.mistakes=db.mistakes.filter(x=>x.id!==id);save();render()}return}if(a==='toggle-mistake'||a==='resolve-mistake'){let m=db.mistakes.find(x=>x.id===id);if(m){m.resolved=!m.resolved;m.resolvedAt=m.resolved?today:null;save();render();toast(m.resolved?'Erreur marquée comme corrigée':'Erreur remise à revoir')}return}if(a==='clear-all'){if(confirm('Effacer TOUT ton carnet sur cet appareil ? Cette action est irréversible sans une sauvegarde.')){if(confirm('Dernière confirmation : tout supprimer ?')){db={sessions:[],goals:[],mistakes:[],statuses:{},statusHistory:[],currentSurah:null,vocab:[],guided:null,dinSeeded:true,onboarded:true,lastBackupAt:null};journalDate=today;save();closeModal();nav('home');toast('Carnet vidé')}}return}});
+document.addEventListener('keydown',ev=>{if(ev.key==='Escape'){closeModal();closeMenu();}if((ev.key==='Enter'||ev.key===' ')&&ev.target.matches('[data-action="open-surah"]')){ev.preventDefault();ev.target.click()}});
+document.querySelectorAll('[data-ico]').forEach(el=>el.innerHTML=ico(el.dataset.ico));render();if(!hadStoredData)setTimeout(showWelcome,80);if(!storeOK)toast('Le stockage local est indisponible. Pour un usage fiable, ouvre l’application depuis un site HTTPS.');if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body>
+</html>
