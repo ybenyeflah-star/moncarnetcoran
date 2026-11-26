@@ -1,6 +1,6 @@
 // Mon Carnet Coran – cache local des fichiers de l'application.
 // Les séances, erreurs et sauvegardes ne sont jamais envoyées vers ce service worker.
-const CACHE='mon-carnet-coran-v21-gh-20261126';
+const CACHE='mon-carnet-coran-v22';
 const SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));

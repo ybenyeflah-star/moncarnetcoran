@@ -1,10 +1,13 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"><meta name="theme-color" content="#997a9c"><link rel="manifest" href="./manifest.webmanifest"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#faf6f9"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Carnet Coran">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#805e90"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Carnet Coran">
 <link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon-192.png">
 <title>Mon Carnet Coran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <style>
 :root{--bg:#fbf7f6;--paper:#fff;--ink:#352e37;--muted:#8b828d;--accent:#a76f8b;--accent-dark:#85546e;--soft:#f6e9f0;--line:#eee4eb;--green:#5f846d;--green-bg:#e9f4eb;--orange:#b47f3d;--orange-bg:#fcf4e7;--red:#b15f70;--red-bg:#faebee;--shadow:0 8px 30px rgba(70,33,58,.045)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:default}a{color:var(--accent-dark)}.app{max-width:570px;margin:auto;min-height:100vh;padding:22px 18px 110px}.top{display:flex;justify-content:space-between;align-items:center;padding:3px 2px 20px}.eyebrow{font-size:10px;letter-spacing:2.1px;font-weight:800;color:var(--accent);text-transform:uppercase}.headline{font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.12;letter-spacing:-.5px;margin:5px 0 0}.sub{color:var(--muted);font-size:13px;margin:5px 0 0}.top-right{width:43px;height:43px;border:1px solid var(--line);background:#fff;border-radius:14px;display:grid;place-items:center;color:var(--accent)}.top-right svg{width:20px;height:20px}.card{border:1px solid var(--line);border-radius:20px;background:var(--paper);padding:18px;margin-bottom:14px;box-shadow:var(--shadow)}.card.tinted{background:#f5e9ee;border-color:#f2dfe8}.section-title{font-weight:750;font-size:16px;margin:23px 0 11px;display:flex;justify-content:space-between;align-items:center}.section-title small{font-size:12px;color:var(--muted);font-weight:500}.label{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);font-weight:800}.big{font-family:Georgia,"Times New Roman",serif;font-size:24px;margin:7px 0 1px}.muted{color:var(--muted)}.small{font-size:12px}.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.grow{flex:1;min-width:0}.pill{display:inline-flex;align-items:center;gap:5px;border-radius:99px;padding:5px 10px;background:var(--soft);color:var(--accent-dark);font-size:11px;font-weight:650;white-space:nowrap}.pill.green{background:var(--green-bg);color:var(--green)}.pill.orange{background:var(--orange-bg);color:var(--orange)}.pill.red{background:var(--red-bg);color:var(--red)}.pill.gray{background:#f2f0f2;color:#807983}.btn{border:0;border-radius:13px;background:var(--accent);padding:12px 15px;font-weight:700;color:#fff;display:inline-flex;justify-content:center;align-items:center;gap:7px}.btn.full{width:100%}.btn.ghost{background:#fff;color:var(--accent-dark);border:1px solid #e9d6e1}.btn.soft{background:var(--soft);color:var(--accent-dark)}.btn.danger{background:var(--red-bg);color:#a74e62}.btn.smallbtn{font-size:12px;padding:9px 11px;border-radius:10px}.linkbtn{border:none;background:none;color:var(--accent-dark);font-weight:700;padding:6px 0;font-size:12px}.iconbtn{height:31px;min-width:31px;border:1px solid var(--line);background:#fff;border-radius:9px;color:var(--muted);font-size:17px}.tick{width:22px;height:22px;accent-color:var(--accent);flex:0 0 auto}.task{display:flex;align-items:center;gap:11px;padding:12px 0;border-top:1px solid #f1eaf0}.task:first-child{border-top:0}.task.done .tasktext{text-decoration:line-through;color:var(--muted)}.progress{height:7px;background:#ede4ea;border-radius:20px;overflow:hidden;margin:9px 0}.fill{height:100%;background:var(--accent);border-radius:20px}.metricgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:13px 0 3px}.metric{border:1px solid var(--line);border-radius:16px;padding:11px 8px;background:white;text-align:center}.metric strong{font-family:Georgia,serif;font-size:25px;display:block;font-weight:500}.metric small{font-size:10px;color:var(--muted);line-height:1.2;display:block}.bottomnav{position:fixed;bottom:0;left:0;right:0;z-index:20;display:flex;justify-content:space-around;gap:4px;background:rgba(255,255,255,.97);box-shadow:0 -7px 35px rgba(58,31,52,.08);border-top:1px solid var(--line);padding:9px max(12px,calc((100vw - 570px)/2 + 14px)) calc(10px + env(safe-area-inset-bottom))}.navitem{flex:1;border:0;background:none;color:#9b909d;padding:6px 4px;border-radius:12px;font-size:10px;font-weight:600;display:flex;align-items:center;flex-direction:column;gap:4px}.navitem svg{width:21px;height:21px}.navitem.active{background:#f7ebf1;color:var(--accent-dark)}.field{display:block;margin:14px 0}.field label{display:block;font-weight:700;margin-bottom:6px;font-size:12px;color:#5f5260}.field input,.field select,.field textarea,.inlineinput{width:100%;border-radius:12px;padding:12px 13px;outline:0;border:1px solid #e5d9e1;background:white;color:var(--ink);min-height:44px}.field textarea{resize:vertical;min-height:80px}.field input:focus,.field select:focus,.field textarea:focus,.inlineinput:focus{border-color:var(--accent);box-shadow:0 0 0 3px #f5e7ef}.fieldline{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tinyhint{font-size:11px;color:var(--muted);margin-top:5px}.empty{border:1px dashed #dfcbd7;border-radius:17px;padding:23px 14px;text-align:center;color:var(--muted);font-size:13px;background:rgba(255,255,255,.5)}.empty .flower{font-size:27px;display:block;margin-bottom:8px}.listitem{padding:14px 0;border-bottom:1px solid var(--line)}.listitem:last-child{border-bottom:0;padding-bottom:0}.listitem:first-child{padding-top:2px}.session-title{font-weight:750}.tagline{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.searchrow{display:flex;gap:8px;margin-bottom:15px}.searchrow input{flex:1;min-width:0}.searchrow select{max-width:155px}.surah-row{display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--line);padding:12px 0;cursor:pointer}.surah-row:last-child{border:0}.surah-num{background:var(--soft);color:var(--accent-dark);width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:12px;flex:0 0 auto}.surah-row .name{font-weight:700}.arrow{margin-left:auto;color:#bcabb6;font-size:20px}.notice{padding:11px 13px;background:#f8eff3;border:1px solid #f0dee7;color:#785367;border-radius:13px;font-size:12px;margin:9px 0 14px}.tinybtn{border:0;background:none;color:var(--accent-dark);font-size:12px;font-weight:700}.chart{display:flex;align-items:end;gap:9px;height:113px;padding:10px 4px 0}.barcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}.bar{width:min(32px,100%);background:#ddbbcb;border-radius:7px 7px 3px 3px;min-height:3px;transition:height .3s}.barcol small{font-size:10px;color:var(--muted);margin-top:6px}.tipnum{display:grid;place-items:center;width:27px;height:27px;flex:0 0 auto;border-radius:10px;background:#f4e7ee;color:var(--accent-dark);font-weight:800}.tipstep{display:flex;gap:11px;align-items:flex-start;margin:14px 0;font-size:13px}.tipstep strong{display:block;margin-bottom:2px}.tipstep p{margin:0;color:#766d79}.modal-wrap{position:fixed;inset:0;z-index:40;display:none;align-items:end;justify-content:center;background:rgba(38,28,38,.47);padding:12px 10px 0}.modal-wrap.show{display:flex}.modal{max-width:570px;width:100%;background:var(--bg);border-radius:23px 23px 0 0;max-height:94dvh;overflow-y:auto;overscroll-behavior:contain;padding:20px 19px calc(25px + env(safe-area-inset-bottom));box-shadow:0 -5px 40px #28132333}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:8px}.modal h2{font-size:23px;font-family:Georgia,serif;font-weight:500;margin:0}.modal-close{background:white;border:1px solid var(--line);border-radius:11px;width:33px;height:33px;font-size:19px;color:var(--muted)}.modal-actions{display:flex;gap:10px;margin-top:18px}.modal-actions .btn{flex:1}.footer-note{text-align:center;font-size:11px;color:var(--muted);padding:10px}.toast{position:fixed;z-index:90;bottom:94px;left:50%;transform:translateX(-50%);white-space:nowrap;border-radius:13px;background:#433543;color:white;padding:10px 16px;display:none;box-shadow:0 6px 25px #0002;font-size:13px;max-width:95%;white-space:normal}.toast.show{display:block}.divider{border:0;border-top:1px solid var(--line);margin:13px 0}.marked{border-left:3px solid var(--accent);padding-left:10px}.tip-tab{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.selecttip{border:1px solid var(--line);border-radius:12px;padding:13px;background:white;color:var(--ink);text-align:left;font-weight:650;font-size:12px}.selecttip.active{background:var(--soft);border-color:#d9b4c7;color:var(--accent-dark)}.note-line{font-size:12px;color:#756975;white-space:pre-wrap;overflow-wrap:anywhere;margin:5px 0}.filebtn{position:relative;overflow:hidden}.filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer}.statusbox{display:flex;flex-wrap:wrap;gap:6px}.statusbox button{border:1px solid var(--line);background:white;color:var(--muted);border-radius:10px;padding:9px 11px;font-size:11px;font-weight:650}.statusbox button.selected{background:var(--soft);border-color:#d7aec3;color:var(--accent-dark)}
@@ -314,32 +317,156 @@ button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
 .quick-last{display:block;width:100%;text-align:left;border:1px dashed #d4b8cb;border-radius:11px;padding:11px 12px;background:var(--soft);color:var(--accent-dark);font-size:12px;font-weight:700;margin-bottom:10px}
 .bulk-entry{width:100%;display:flex;align-items:center;justify-content:space-between;gap:5px;padding:12px 14px;border:1px solid var(--line);background:white;border-radius:13px;color:var(--accent-dark);font-weight:700;font-size:13px;margin:12px 0}
 @media(max-width:355px){.welcome-juz-grid{grid-template-columns:1fr 1fr}.welcome-option{font-size:13px}}
+
+/* V22 : interface mobile simplifiée, typographie moderne, navigation principale en bas */
+:root{
+  --bg:#f9f7fb;
+  --paper:#fff;
+  --ink:#30283b;
+  --muted:#736b80;
+  --accent:#906ca0;
+  --accent-dark:#6d4c7c;
+  --soft:#f3edf7;
+  --line:#e9e2ee;
+  --green:#478367;
+  --green-bg:#e9f4ef;
+  --orange:#9b713c;
+  --orange-bg:#fbf0e4;
+  --red:#b65d75;
+  --red-bg:#fbedf1;
+  --shadow:0 6px 24px rgba(82,58,104,.045);
+}
+html{scroll-behavior:auto}
+body{
+ background:linear-gradient(165deg,#f8f3fb 0%,#fbfafc 340px,#f9f7fb 100%);
+ color:var(--ink);
+ font-family:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ font-size:15px;
+ line-height:1.48;
+ font-weight:400;
+ -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font-family:inherit}
+h1,h2,h3,.headline,.big,.metric-number,.metric strong,.home-intro h2,.surah-counter,.surah-pct,.modal h2,.session-screen .modal-head h2,.quick-heading,.stat-card strong{
+ font-family:"Plus Jakarta Sans","DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+ letter-spacing:-.035em;
+}
+.headline{font-size:20px;line-height:1.2;font-weight:800;letter-spacing:-.045em;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app{max-width:550px;min-height:100dvh;padding:0 16px calc(112px + env(safe-area-inset-bottom));}
+.top{top:0;z-index:22;gap:8px;padding:calc(10px + env(safe-area-inset-top)) 2px 12px!important;margin:0 -2px 16px!important;min-height:72px;background:rgba(249,247,251,.96);border-bottom:1px solid rgba(120,85,130,.08)}
+.top-titles{flex:1;min-width:0}
+.headline .ui-icon{width:23px;height:23px;margin-right:6px;vertical-align:-4px;color:var(--accent)}
+.top:has(.home-shortcut:not([hidden])) .headline{font-size:19px}
+.home-shortcut,.menu-trigger,.top-right{width:42px;min-width:42px;height:42px;min-height:42px;flex:0 0 42px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:none;color:var(--accent-dark)}
+.home-shortcut .home-shortcut-label{display:none}
+.home-shortcut svg,.menu-trigger svg{width:20px;height:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:16px;margin-bottom:12px}
+.card.tinted{background:linear-gradient(135deg,#f5ebf8,#faf4f7);border-color:#ecdfef}
+.home-intro{margin:5px 2px 13px;align-items:center}
+.home-intro h2{font-size:22px;font-weight:800;color:var(--ink)}
+.home-intro .muted{font-size:12px}
+.progress-strip{padding:19px 18px 16px;margin-bottom:16px;border-radius:21px;gap:12px;background:linear-gradient(135deg,#fff 5%,#fdf9ff 100%);box-shadow:var(--shadow)}
+.progress-strip>div:first-child{border-right:1px solid var(--line)}
+.metric-number{font-size:30px;line-height:1.2;font-weight:800;color:var(--accent-dark)}
+.metric-number small{font-family:"DM Sans",system-ui,sans-serif;font-size:13px;font-weight:600;color:var(--muted)}
+.metric-caption{font-size:12px;color:var(--muted)}
+.progress-strip-line{margin-top:6px}.progress{height:7px;border-radius:30px;background:#eee5f1}.fill{background:linear-gradient(90deg,#ae88b7,#78558c)}
+.btn{background:var(--accent-dark);border-radius:14px;min-height:47px;box-shadow:none;font-weight:700;font-size:14px;letter-spacing:-.01em}
+.btn.ghost{color:var(--accent-dark);border:1px solid #e7dbe9;background:#fff}
+.btn.soft{background:var(--soft);color:var(--accent-dark)}
+.daily-primary{font-size:15px;min-height:53px;border-radius:16px;margin-bottom:10px;background:linear-gradient(110deg,#835d97,#6f507f)}
+.daily-secondary{gap:9px;margin-bottom:16px}
+.daily-secondary .btn{font-size:13px;min-height:49px;border-radius:14px}
+.current-surah{background:#f2eaf6;border-color:#e4d4eb;border-radius:16px;color:var(--accent-dark)}
+.home-goals{padding:17px 16px}.home-goals .compact-title{font-size:14px;letter-spacing:-.01em}
+.home-goals .task{padding:10px 0;font-size:14px}
+.goal-empty{background:var(--soft);color:var(--accent-dark);border-radius:12px;min-height:47px;font-size:13px}
+.home-week-mini{padding:3px 10px 10px;margin-top:14px}.home-week-mini .week-mini-heading{font-size:13px;font-weight:700;color:var(--ink)}
+.week-tracker{gap:4px}.week-circle{width:28px;height:28px;background:#ece5f0}.week-circle.complete{background:#8e6a9b}
+.section-title{font-size:15px;font-weight:800;margin-top:20px}
+.label{font-family:"DM Sans",system-ui,sans-serif;font-size:10px;letter-spacing:1px}
+.pill{border-radius:999px;font-size:11px;font-weight:700}
+.filter-chips{padding-bottom:9px;gap:8px}
+.filter-chip{background:#fff;border:1px solid var(--line);color:var(--accent-dark);min-height:40px;border-radius:100px;font-size:12px;padding:8px 13px;font-weight:700}
+.filter-chip.active{background:var(--accent-dark);color:white;border-color:var(--accent-dark)}
+.surah-list{gap:8px}.surah-list .surah-row{min-height:62px;border-radius:17px;padding:12px 14px;box-shadow:var(--shadow)}
+.surah-list-name{font-size:14px;font-weight:700}
+.surah-overview{border-radius:20px;padding:16px}
+.surah-counter,.surah-pct{font-weight:800;color:var(--accent-dark)}
+.bulk-entry{border-style:dashed;border-color:#dfcce4;color:var(--accent-dark);background:#fbf7fc;border-radius:14px;min-height:50px}
+.modal-wrap{background:rgba(35,23,40,.43)}
+.modal{background:var(--bg);border-radius:24px 24px 0 0;padding:18px 17px calc(90px + env(safe-area-inset-bottom))}
+.modal-head{background:var(--bg);border-color:var(--line)}
+.modal h2{font-size:21px;font-weight:800}
+.modal-quick{border-radius:13px;width:42px;height:42px}
+.modal-quick.confirm{background:var(--accent-dark)}
+.session-screen .modal{background:#faf7fc;padding-bottom:calc(95px + env(safe-area-inset-bottom));max-width:550px}
+.session-screen .modal-head{background:#faf7fc}
+.session-screen .modal-head h2{font-size:23px;font-weight:800}
+.field label{color:#55465f;font-size:12px}
+.field input,.field select,.field textarea,.inlineinput,.corr-row input,.corr-row textarea{border-color:#e5d9eb;border-radius:12px;background:#fff;color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus,.inlineinput:focus{box-shadow:0 0 0 3px #e9d8f0;border-color:#a47bb3}
+.quick-top{border:1px solid var(--line);border-radius:15px}
+.quick-kind button{border-radius:13px;min-height:47px}.quick-kind button.active{background:var(--accent-dark);border-color:var(--accent-dark)}
+.quick-heading{font-size:17px;font-weight:800}
+.welcome-option{border-radius:14px}.welcome-details,.welcome-surah-list{border-radius:14px}
+.signcard,.corr-group,.vocab-entry{border-radius:17px}
+/* Barre de navigation : cinq actions principales, stable et sans surcharger l'en-tête. */
+.main-bottom-nav{position:fixed;z-index:30;bottom:0;left:0;right:0;background:rgba(255,253,255,.97);border-top:1px solid #e8dfec;box-shadow:0 -8px 28px rgba(50,30,62,.055);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.main-bottom-inner{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));max-width:550px;margin:0 auto;padding:8px 8px 9px;gap:4px}
+.main-tab{position:relative;border:0;background:none;border-radius:13px;min-width:0;min-height:57px;padding:6px 2px 4px;display:flex;align-items:center;flex-direction:column;justify-content:center;gap:3px;color:#8d8195;font-size:10.5px;font-weight:700;white-space:nowrap;touch-action:manipulation}
+.tab-icon{height:23px;display:grid;place-items:center}.tab-icon svg{width:22px;height:22px}
+.main-tab.active{background:#f2e9f6;color:var(--accent-dark)}
+.main-tab-primary{color:var(--accent-dark)}
+.main-tab-primary .tab-icon{width:38px;height:34px;background:linear-gradient(135deg,#9d7aae,#79558e);border-radius:13px;color:#fff;margin-top:-2px;box-shadow:0 4px 9px rgba(111,72,137,.15)}
+.main-tab-primary .tab-icon svg{width:20px;height:20px}
+.main-tab:focus-visible,.btn:focus-visible,.menu-trigger:focus-visible{outline:3px solid #b693c9;outline-offset:2px}
+/* Le menu secondaire s'ouvre uniquement via le bouton en haut. */
+.sidebar{background:#fefcff;box-shadow:10px 0 35px rgba(46,30,52,.14);padding-top:calc(24px + env(safe-area-inset-top));}
+.drawer-subtitle{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:19px;font-weight:800;letter-spacing:-.035em;margin-top:3px;color:var(--ink)}
+.drawer-heading{padding-bottom:14px;margin-bottom:16px}
+.side-links{gap:7px}.side-link{border-radius:13px;min-height:51px;font-weight:700;font-size:13px;padding:11px 13px;gap:10px}
+.side-link.active,.side-link:active{background:#f1e9f5;color:var(--accent-dark)}
+.side-divider{margin:10px 5px}
+.side-icon{color:var(--accent-dark)}
+/* Drawer et modales au-dessus de la barre fixe. */
+.drawer-shade{z-index:49}.sidebar{z-index:50}.modal-wrap{z-index:45}.toast{z-index:90;bottom:calc(93px + env(safe-area-inset-bottom))}
+/* Les champs de saisie iOS restent >=16px pour éviter l'auto-zoom. */
+input:not([type="checkbox"]):not([type="radio"]),textarea,select{font-size:16px!important}
+@media(min-width:650px){.app{border-left:1px solid var(--line);border-right:1px solid var(--line)}.modal{max-width:550px;border-radius:24px;max-height:90dvh;padding-bottom:35px}.session-screen .modal{max-height:100dvh;border-radius:0}}
+@media(max-width:365px){.app{padding-left:12px;padding-right:12px}.headline{font-size:18px}.top:has(.home-shortcut:not([hidden])) .headline{font-size:17px}.main-bottom-inner{gap:1px;padding-inline:4px}.main-tab{font-size:9.5px;letter-spacing:-.03em}.main-tab-primary .tab-icon{width:34px}.progress-strip{padding:15px 12px}.metric-number{font-size:26px}.home-intro h2{font-size:20px}.daily-secondary .btn{font-size:12px}.surah-list-name{font-size:13px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
 </style>
 </head>
 <body>
-<div class="app"><header class="top"><button class="home-shortcut" type="button" data-action="go-home" aria-label="Retour à l’accueil" title="Retour à l’accueil" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg><span class="home-shortcut-label">Accueil</span></button><div class="top-titles"><h1 class="headline" id="title">Mon Carnet Coran</h1><p class="sub" id="subtitle"></p></div><button class="top-right search-trigger" data-action="show-search" hidden aria-label="Rechercher une sourate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><button class="menu-trigger" type="button" data-action="open-menu" aria-label="Ouvrir le menu" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></header><main id="main"></main></div>
-<div class="drawer-shade" id="drawer-shade" data-action="close-menu" aria-hidden="true"></div>
-<aside class="sidebar" id="sidebar" aria-label="Navigation" aria-hidden="true" inert>
-<div class="drawer-heading"><div class="eyebrow">MON CARNET CORAN ✿</div><button class="modal-close" type="button" data-action="close-menu" aria-label="Fermer le menu">×</button></div>
-<nav class="side-links" aria-label="Rubriques">
-<nav class="side-links" aria-label="Rubriques">
-<button class="side-link active" type="button" data-nav="home"><span class="side-icon" data-ico="home"></span> Accueil</button>
-<button class="side-link" type="button" data-action="quick-review"><span class="side-icon" data-ico="refresh"></span> Révision express</button>
-<button class="side-link" type="button" data-nav="learn"><span class="side-icon" data-ico="book"></span> Apprendre</button>
-<button class="side-link" type="button" data-action="surahs-review"><span class="side-icon" data-ico="target"></span> À corriger</button>
-<button class="side-link" type="button" data-action="surahs-known"><span class="side-icon" data-ico="list"></span> Mes sourates</button>
-<button class="side-link" type="button" data-nav="sessions"><span class="side-icon" data-ico="calendar"></span> Mon journal</button>
-<hr class="side-divider"><div class="side-caption">MES OUTILS</div>
-<button class="side-link" type="button" data-nav="vocab"><span class="side-icon">ع</span> Lexique</button>
-<button class="side-link" type="button" data-nav="tips"><span class="side-icon">✧</span> Astuces</button>
-<button class="side-link" type="button" data-nav="signs"><span class="side-icon">ۘ</span> Signes de lecture</button>
+<div class="app"><header class="top"><button class="home-shortcut" type="button" data-action="go-home" aria-label="Retour à l’accueil" title="Retour à l’accueil" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg><span class="home-shortcut-label">Accueil</span></button><div class="top-titles"><h1 class="headline" id="title">Mon Carnet Coran</h1><p class="sub" id="subtitle"></p></div><button class="top-right search-trigger" data-action="show-search" hidden aria-label="Rechercher une sourate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><button class="menu-trigger" type="button" data-action="open-menu" aria-label="Ouvrir les outils" title="Outils" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></header><main id="main"></main></div>
+<nav class="main-bottom-nav" aria-label="Navigation principale">
+  <div class="main-bottom-inner">
+    <button class="main-tab" data-nav="home" type="button" aria-label="Accueil"><span class="tab-icon" data-ico="home"></span><span>Accueil</span></button>
+    <button class="main-tab" data-nav="learn" type="button" aria-label="Apprendre"><span class="tab-icon" data-ico="book"></span><span>Apprendre</span></button>
+    <button class="main-tab main-tab-primary" data-action="quick-review" type="button" aria-label="Nouvelle révision"><span class="tab-icon" data-ico="refresh"></span><span>Réviser</span></button>
+    <button class="main-tab" data-nav="surahs" type="button" aria-label="Mes sourates"><span class="tab-icon" data-ico="list"></span><span>Sourates</span></button>
+    <button class="main-tab" data-nav="sessions" type="button" aria-label="Mon journal"><span class="tab-icon" data-ico="calendar"></span><span>Journal</span></button>
+  </div>
+</nav>
 
-</nav><div class="drawer-bottom"><button class="side-link" type="button" data-action="settings"><span class="side-icon">⚙</span> Paramètres</button></div>
+<div class="drawer-shade" id="drawer-shade" data-action="close-menu" aria-hidden="true"></div>
+<aside aria-hidden="true" aria-label="Mes outils" class="sidebar" id="sidebar" inert>
+  <div class="drawer-heading"><div><div class="eyebrow">MON CARNET CORAN ✿</div><div class="drawer-subtitle">Mes outils</div></div><button aria-label="Fermer les outils" class="modal-close" data-action="close-menu" type="button">×</button></div>
+  <nav aria-label="Outils et réglages" class="side-links">
+    <button class="side-link" data-action="surahs-review" type="button"><span class="side-icon" data-ico="target"></span> Points à corriger</button>
+    <button class="side-link" data-nav="vocab" type="button"><span class="side-icon" aria-hidden="true">ع</span> Mon lexique</button>
+    <button class="side-link" data-nav="tips" type="button"><span class="side-icon" aria-hidden="true">✧</span> Astuces de mémorisation</button>
+    <button class="side-link" data-nav="signs" type="button"><span class="side-icon" aria-hidden="true">ۘ</span> Signes de lecture</button>
+    <hr class="side-divider">
+    <button class="side-link" data-action="settings" type="button"><span class="side-icon" data-ico="settings"></span> Paramètres et sauvegardes</button>
+  </nav>
 </aside>
 <div id="modalwrap" class="modal-wrap"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-head"><h2 id="modal-title"></h2><div class="modal-quick-actions"><button class="modal-quick cancel" type="button" aria-label="Annuler et fermer" title="Annuler" data-action="close-modal">✕</button><button class="modal-quick confirm" id="modal-confirm" type="button" aria-label="Valider et enregistrer" title="Valider" data-action="submit-modal" hidden>✓</button></div></div><div id="modalbody"></div></div></div><div class="toast" id="toast" role="status"></div>
 <script>
 'use strict';
-const ICONS={"home": "<path d=\"m3 10 9-7 9 7v10h-6v-7H9v7H3z\"/>", "book": "<path d=\"M12 6c-3-3-7-3-10-2v15c4-1 7-1 10 2 3-3 6-3 10-2V4c-3-1-7-1-10 2zm0 0v15\"/>", "list": "<path d=\"M8 5h13M8 12h13M8 19h13\"/><circle cx=\"3\" cy=\"5\" r=\".8\"/><circle cx=\"3\" cy=\"12\" r=\".8\"/><circle cx=\"3\" cy=\"19\" r=\".8\"/>", "calendar": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M7 3v5m10-5v5M3 10h18\"/>", "refresh": "<path d=\"M20 12a8 8 0 1 1-3-6M20 3v6h-6\"/>", "target": "<circle cx=\"11\" cy=\"13\" r=\"9\"/><circle cx=\"11\" cy=\"13\" r=\"5\"/><path d=\"m11 13 9-9m-2 0h3V1\"/>", "check": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m8 12 3 3 5-6\"/>", "search": "<circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"m16 16 5 5\"/>", "sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2\"/>", "moon": "<path d=\"M21 14a9 9 0 0 1-11-11 9 9 0 1 0 11 11z\"/>", "flower": "<path d=\"M12 12C1 12 2 3 8 6c1-7 8-7 8 0 6-3 7 6-4 6Zm0 0c11 0 10 9 4 6-1 7-8 7-8 0-6 3-7-6 4-6Z\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"#faf5fa\" stroke=\"none\"/>", "menu": "<path d=\"M4 6h16M4 12h16M4 18h16\"/>"};
+const ICONS={"home": "<path d=\"m3 10 9-7 9 7v10h-6v-7H9v7H3z\"/>", "book": "<path d=\"M12 6c-3-3-7-3-10-2v15c4-1 7-1 10 2 3-3 6-3 10-2V4c-3-1-7-1-10 2zm0 0v15\"/>", "list": "<path d=\"M8 5h13M8 12h13M8 19h13\"/><circle cx=\"3\" cy=\"5\" r=\".8\"/><circle cx=\"3\" cy=\"12\" r=\".8\"/><circle cx=\"3\" cy=\"19\" r=\".8\"/>", "calendar": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M7 3v5m10-5v5M3 10h18\"/>", "refresh": "<path d=\"M20 12a8 8 0 1 1-3-6M20 3v6h-6\"/>", "target": "<circle cx=\"11\" cy=\"13\" r=\"9\"/><circle cx=\"11\" cy=\"13\" r=\"5\"/><path d=\"m11 13 9-9m-2 0h3V1\"/>", "check": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m8 12 3 3 5-6\"/>", "search": "<circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"m16 16 5 5\"/>", "sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2\"/>", "moon": "<path d=\"M21 14a9 9 0 0 1-11-11 9 9 0 1 0 11 11z\"/>", "flower": "<path d=\"M12 12C1 12 2 3 8 6c1-7 8-7 8 0 6-3 7 6-4 6Zm0 0c11 0 10 9 4 6-1 7-8 7-8 0-6 3-7-6 4-6Z\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"12\" cy=\"12\" r=\"2\" fill=\"#faf5fa\" stroke=\"none\"/>", "menu": "<path d=\"M4 6h16M4 12h16M4 18h16\"/>", "settings": "<circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v2m0 16v2m10-10h-2M4 12H2m17.1-7.1-1.5 1.5M6.4 17.6l-1.5 1.5m14.2 0-1.5-1.5M6.4 6.4 4.9 4.9\"/>"};
 function ico(n){return `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]||''}</svg>`}
 function bottomNav(active){return [['home','home','Accueil'],['session','book','Ma séance'],['surahs','list','Sourates'],['sessions','calendar','Journal']].map(([id,icon,label])=>`<button class="navitem ${active===id?'active':''}" ${id==='session'?'data-action="nav-session"':`data-nav="${id}"`} ${active===id?'aria-current="page"':''}>${ico(icon)}<span>${label}</span></button>`).join('')}
 
@@ -522,6 +649,11 @@ function render(){
   document.querySelector('#subtitle').textContent='';
   
   document.querySelectorAll('[data-nav]').forEach(x=>x.classList.toggle('active',x.dataset.nav===view));
+  document.querySelectorAll('.main-tab').forEach(x=>{
+    const active=x.dataset.nav===view;
+    x.classList.toggle('active',active);
+    if(active)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current');
+  });
   document.querySelector('#main').innerHTML=view==='home'?home():view==='learn'?learnPage():view==='surahs'?(selectedSurah?surahDetail(selectedSurah):surahList()):view==='sessions'?sessionsPage():view==='vocab'?vocabPage():view==='signs'?signsPage():tipsPage();
 }
 function home(){

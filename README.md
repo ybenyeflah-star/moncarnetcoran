@@ -1,24 +1,18 @@
-# Mon Carnet Coran 💜 — version GitHub Pages
+# Mon Carnet Coran — V22 (GitHub Pages)
 
-Application mobile en HTML/CSS/JavaScript, sans serveur ni compte.
+Application de suivi de mémorisation du Coran. Interface mobile avec 5 onglets fixes : Accueil, Apprendre, Réviser, Sourates, Journal. Les outils secondaires (lexique, astuces, signes de lecture, sauvegardes) sont accessibles depuis le bouton en haut à droite.
 
-## Mise en ligne (GitHub Pages)
+## Publication
+1. Crée un dépôt public GitHub, par exemple `mon-carnet-coran`.
+2. Charge **les fichiers extraits de ce dossier directement à la racine du dépôt** (pas le fichier ZIP).
+3. Va dans Settings → Pages → Build and deployment → Deploy from a branch → `main`, `/(root)` → Save.
+4. Ouvre `https://TON-PSEUDO.github.io/mon-carnet-coran/`.
 
-1. Sur https://github.com/new, crée un dépôt **Public** nommé `mon-carnet-coran` (tu peux choisir un autre nom).
-2. Dans le dépôt, clique **Add file → Upload files**. Dépose les fichiers **extraits** de ce dossier (`index.html`, `manifest.webmanifest`, `icon-192.png`, `icon-512.png`, `sw.js`, `.nojekyll` et éventuellement `README.md`). Ne dépose **pas** le fichier ZIP lui-même.
-3. Confirme avec **Commit changes** sur la branche `main`.
-4. Ouvre **Settings → Pages → Build and deployment**, sélectionne **Deploy from a branch**, branche `main`, dossier `/(root)`, puis **Save**.
-5. Ton application sera accessible sous `https://TON-PSEUDO.github.io/mon-carnet-coran/` (avec ton pseudo et ton nom de dépôt).
+## Données personnelles
+Le dépôt ne contient aucune séance ou sauvegarde personnelle. Les données sont conservées localement dans le navigateur de chaque personne. Pour migrer depuis Netlify ou une ancienne adresse, exporter une sauvegarde JSON dans Paramètres sur l'ancien site, puis l'importer sur le nouveau.
 
-## Important : données privées
+## Mises à jour
+Remplace les fichiers du dépôt avec ceux de la nouvelle version. Ne change pas l'adresse ni l'origine du site si tu souhaites conserver les données locales existantes.
 
-- Ce dépôt ne contient aucune séance, erreur, sauvegarde ou donnée utilisateur.
-- L'application enregistre le carnet dans le stockage **local du navigateur sur chaque appareil et chaque adresse web**.
-- L'ancien site Netlify et le nouveau site GitHub Pages n'échangent **aucune** donnée automatiquement.
-- Pour récupérer tes notes : sur **Netlify**, Paramètres → Exporter une sauvegarde ; sur **GitHub Pages**, Paramètres → Importer une sauvegarde.
-- Fais régulièrement des exports. Une suppression des données du navigateur peut effacer le carnet local.
-- GitHub Pages sur un dépôt public publie le code **et** le site. Ne commite jamais un fichier JSON de sauvegarde personnelle.
-
-## Mise à jour
-
-Pour chaque nouvelle version, remplacer les fichiers du dépôt. En cas de cache, rafraîchir le site ; le `sw.js` fait un chargement réseau en priorité lorsque la connexion est disponible.
+## À savoir
+La police Google Fonts utilise une ressource externe; si elle n'est pas disponible, l'interface utilise une police système moderne. L'application fonctionne aussi sans ces polices.
